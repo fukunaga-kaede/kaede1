@@ -17,7 +17,7 @@
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
             android:text="@string/total"
-            android:textSize="25sp" />
+            android:textSize="30sp" />
 
         <TextView
             android:id="@+id/look_total"
@@ -26,7 +26,7 @@
             android:layout_weight="1"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
-            android:textSize="25sp" />
+            android:textSize="30sp" />
 
     </LinearLayout>
 
@@ -42,7 +42,7 @@
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
             android:text="@string/income"
-            android:textSize="25sp" />
+            android:textSize="30sp" />
 
         <TextView
             android:id="@+id/look_income"
@@ -51,7 +51,7 @@
             android:layout_weight="0.5"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
-            android:textSize="25sp" />
+            android:textSize="30sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -59,7 +59,7 @@
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
             android:text="@string/expenditure"
-            android:textSize="25sp" />
+            android:textSize="30sp" />
 
         <TextView
             android:id="@+id/look_expenditure"
@@ -68,7 +68,7 @@
             android:layout_weight="0.5"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
-            android:textSize="25sp" />
+            android:textSize="30sp" />
 
     </LinearLayout>
 

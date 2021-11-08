@@ -23,77 +23,20 @@ public class Look extends AppCompatActivity {
 
         Map<String,String> menu = new HashMap<>();
         menu.put("item","ごはん");
+        menu.put("memo","マック");
         menu.put("amount","1000円");
         menuList.add(menu);
 
         menu = new HashMap<>();
         menu.put("item","服");
+        menu.put("memo","UNIQLO");
         menu.put("amount","10000円");
         menuList.add(menu);
 
-        menu = new HashMap<>();
-        menu.put("item","ごはん");
-        menu.put("amount","1000円");
-        menuList.add(menu);
 
-        menu = new HashMap<>();
-        menu.put("item","服");
-        menu.put("amount","10000円");
-        menuList.add(menu);
-
-        menu = new HashMap<>();
-        menu.put("item","ごはん");
-        menu.put("amount","1000円");
-        menuList.add(menu);
-
-        menu = new HashMap<>();
-        menu.put("item","服");
-        menu.put("amount","10000円");
-        menuList.add(menu);
-
-        menu = new HashMap<>();
-        menu.put("item","ごはん");
-        menu.put("amount","1000円");
-        menuList.add(menu);
-
-        menu = new HashMap<>();
-        menu.put("item","服");
-        menu.put("amount","10000円");
-        menuList.add(menu);
-
-        menu = new HashMap<>();
-        menu.put("item","ごはん");
-        menu.put("amount","1000円");
-        menuList.add(menu);
-
-        menu = new HashMap<>();
-        menu.put("item","服");
-        menu.put("amount","10000円");
-        menuList.add(menu);
-
-        menu = new HashMap<>();
-        menu.put("item","ごはん");
-        menu.put("amount","1000円");
-        menuList.add(menu);
-
-        menu = new HashMap<>();
-        menu.put("item","服");
-        menu.put("amount","10000円");
-        menuList.add(menu);
-
-        menu = new HashMap<>();
-        menu.put("item","ごはん");
-        menu.put("amount","1000円");
-        menuList.add(menu);
-
-        menu = new HashMap<>();
-        menu.put("item","服");
-        menu.put("amount","10000円");
-        menuList.add(menu);
-
-        String[] from = {"item","amount"};
-        int[] to = {android.R.id.text1, android.R.id.text2};
-        SimpleAdapter adapter = new SimpleAdapter(Look.this,menuList,android.R.layout.simple_list_item_2,from,to);
+        String[] from = {"item","memo","amount"};
+        int[] to = {R.id.display_item, R.id.display_memo,R.id.display_amount};
+        SimpleAdapter adapter = new SimpleAdapter(Look.this,menuList,R.layout.row,from,to);
         lvMenu.setAdapter(adapter);
     }
 }
