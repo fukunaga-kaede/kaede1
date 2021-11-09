@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
@@ -45,8 +46,16 @@ public class Look extends AppCompatActivity {
         lvMenu.setAdapter(adapter);
 
         lvMenu.setOnItemClickListener(new ListItemClickListener());
+
+        // 追加ボタンの取得
+        Button addClick = findViewById(R.id.addClick);
+        // 追加ボタンのリスナクラスのインスタンスを作成
+        AddClickListener add_listener = new AddClickListener();
+        // 追加ボタンにリスナを設定
+        addClick.setOnClickListener(add_listener);
     }
 
+    //　リストがクリックされた時の処理
     private class ListItemClickListener implements AdapterView.OnItemClickListener {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -65,6 +74,19 @@ public class Look extends AppCompatActivity {
             intent.putExtra("fixMemo",fixMemo);
             intent.putExtra("fixAmount",fixAmount);
 
+            startActivity(intent);
+        }
+    }
+
+    // 追加ボタンを押した場合の処理
+    private class AddClickListener implements View.OnClickListener {
+        @Override
+        public void onClick (View view) {
+
+            // DBの更新処理
+
+            // 入力画面に遷移
+            Intent intent = new Intent(Look.this, Input.class);
             startActivity(intent);
         }
     }

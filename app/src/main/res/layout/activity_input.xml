@@ -5,14 +5,15 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+
     <EditText
-        android:id="@+id/fixDate"
+        android:id="@+id/inputDate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/date"/>
 
     <EditText
-        android:id="@+id/fixItem"
+        android:id="@+id/inputItem"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/item"/>
@@ -40,13 +41,13 @@
     </RadioGroup>
 
     <EditText
-        android:id="@+id/fixAmount"
+        android:id="@+id/inputAmount"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/amount"/>
 
     <EditText
-        android:id="@+id/fixMemo"
+        android:id="@+id/inputMemo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/memo"/>
@@ -66,16 +67,11 @@
             android:text="@string/back_button"/>
 
         <Button
-            android:id="@+id/fixClick"
+            android:id="@+id/inputClick"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="@string/fix"/>
+            android:text="@string/input"/>
 
-        <Button
-            android:id="@+id/deleteClick"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:text="@string/delete"/>
 
 
     </LinearLayout>
