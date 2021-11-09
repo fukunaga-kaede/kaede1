@@ -59,7 +59,7 @@ public class Input extends AppCompatActivity {
                 String inputMemo = (String)inputItemMemo.getText();
 
                 // 金額の符号を設定
-                if()
+                // if(inputAmount.)
 
                 // SQL
 
