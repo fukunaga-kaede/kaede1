@@ -58,11 +58,17 @@ public class Input extends AppCompatActivity {
                 String inputAmount = (String)inputItemAmount.getText();
                 String inputMemo = (String)inputItemMemo.getText();
 
+
                 // 金額の符号を設定
-                // if(inputAmount.)
+                if(inputAmount.equals("支出")) {
+                    int inputAmountInt = Integer.parseInt(inputAmount);
+                    inputAmountInt *= -1;
+                    inputAmount = Integer.toString(inputAmountInt);
+                }
 
                 // SQL
 
+                finish();
 
             } else {
                 // 何も選択されていない場合の処理
@@ -70,9 +76,6 @@ public class Input extends AppCompatActivity {
             }
 
 
-            // DBの更新処理
-
-            // finish();
         }
     }
 }
