@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
@@ -76,9 +77,44 @@ public class Fix extends AppCompatActivity {
     private class FixClickListenerListener implements View.OnClickListener {
         @Override
         public void onClick (View view) {
-            // DBの更新処理
+            // ラジオボタンの内容で金額場合分け
+            RadioGroup radioGroup = (RadioGroup) findViewById(R.id.flgIncomeExpenditure);
 
-            finish();
+            int checkedId = radioGroup.getCheckedRadioButtonId();
+
+            if (checkedId != -1) {
+                // 選択されているラジオボタンの取得
+                RadioButton radioButton = (RadioButton) findViewById(checkedId);
+
+                // ラジオボタンのテキストを取得
+                String text = radioButton.getText().toString();
+
+                // 入力内容を取得
+                TextView fixDateText = findViewById(R.id.fixDate);
+                TextView fixItemText = findViewById(R.id.fixItem);
+                TextView fixItemAmount = findViewById(R.id.fixAmount);
+                TextView fixItemMemo = findViewById(R.id.fixMemo);
+
+                String fixDate = (String)fixDateText.getText();
+                String fixItem = (String)fixItemText.getText();
+                String fixAmount = (String)fixItemAmount.getText();
+                String fixMemo = (String)fixItemMemo.getText();
+
+
+                // 金額の符号を設定
+                if(fixAmount.equals("支出")) {
+                    int fixAmountInt = Integer.parseInt(fixAmount);
+                    fixAmountInt *= -1;
+                    fixAmount = Integer.toString(fixAmountInt);
+                }
+
+                // SQL
+
+                finish();
+            } else {
+                // 何も選択されていない場合の処理
+                // トーストを作る
+            }
         }
     }
 

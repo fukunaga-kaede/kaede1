@@ -7,26 +7,22 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="palegreen">#98fb98</color>
-    <color name="lightgreen">#90ee90</color>
-    <color name="darkseagreen">#8fbc8f</color>
 
 
-    <color name="pink_button">#ff66c1</color>
-    <color name="pink_background">#fff0f5</color>
-    <color name="blue_button">#add8e6</color>
-    <color name="blue_background">#fff0f5</color>
+    <!--<color name="pink_button">#ff66c1</color>
+    <color name="blue_button">#add8e6</color>-->
 
-
+    <color name="currently">#ffeff7</color>
+    <color name="future">#efefff</color>
 
     <!--   color for the app bar and other primary UI elements -->
-    <color name="gray_light">#c0c0c0</color>
+    <color name="primary">#c0c0c0</color>
 
     <!--   a darker variant of the primary color, used for
            the status bar (on Android 5.0+) and contextual app bars -->
-    <color name="gray_mid">#a9a9a9</color>
+    <color name="dark">#a9a9a9</color>
 
     <!--   a secondary color for controls like checkboxes and text fields -->
-    <color name="gray_dark">#696969</color>
+    <color name="text">#696969</color>
 
 </resources>
