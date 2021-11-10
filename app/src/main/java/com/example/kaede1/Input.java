@@ -53,10 +53,10 @@ public class Input extends AppCompatActivity {
                 TextView inputItemAmount = findViewById(R.id.inputAmount);
                 TextView inputItemMemo = findViewById(R.id.inputMemo);
 
-                String inputDate = (String)inputDateText.getText();
-                String inputItem = (String)inputItemText.getText();
-                String inputAmount = (String)inputItemAmount.getText();
-                String inputMemo = (String)inputItemMemo.getText();
+                String inputDate = inputDateText.getText().toString();
+                String inputItem = inputItemText.getText().toString();
+                String inputAmount = inputItemAmount.getText().toString();
+                String inputMemo = inputItemMemo.getText().toString();
 
 
                 // 金額の符号を設定

@@ -9,11 +9,11 @@
     <color name="white">#FFFFFFFF</color>
 
 
-    <!--<color name="pink_button">#ff66c1</color>
-    <color name="blue_button">#add8e6</color>-->
+    <color name="currently_button">#adadff</color>
+    <color name="future_button">#ffadd6</color>
 
-    <color name="currently">#ffeff7</color>
-    <color name="future">#efefff</color>
+    <color name="currently">#efefff</color>
+    <color name="future">#ffeff7</color>
     <color name="line">#f1f1f1</color>
 
     <!--   color for the app bar and other primary UI elements -->

@@ -95,10 +95,10 @@ public class Fix extends AppCompatActivity {
                 TextView fixItemAmount = findViewById(R.id.fixAmount);
                 TextView fixItemMemo = findViewById(R.id.fixMemo);
 
-                String fixDate = (String)fixDateText.getText();
-                String fixItem = (String)fixItemText.getText();
-                String fixAmount = (String)fixItemAmount.getText();
-                String fixMemo = (String)fixItemMemo.getText();
+                String fixDate = fixDateText.getText().toString();
+                String fixItem = fixItemText.getText().toString();
+                String fixAmount = fixItemAmount.getText().toString();
+                String fixMemo = fixItemMemo.getText().toString();
 
 
                 // 金額の符号を設定
