@@ -17,6 +17,7 @@
         android:paddingBottom="10dp"
         android:background="@color/white"
         android:textSize="25sp"
+        android:textColor="@color/text"
         android:hint="@string/date"/>
 
     <EditText
@@ -29,6 +30,7 @@
         android:paddingBottom="10dp"
         android:background="@color/white"
         android:textSize="25sp"
+        android:textColor="@color/text"
         android:hint="@string/item"/>
 
     <RadioGroup
@@ -47,6 +49,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
+            android:textColor="@color/text"
             android:text="@string/expenditure"/>
 
         <RadioButton
@@ -54,6 +57,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
+            android:textColor="@color/text"
             android:text="@string/income"/>
 
     </RadioGroup>
@@ -68,6 +72,7 @@
         android:paddingBottom="10dp"
         android:background="@color/white"
         android:textSize="25sp"
+        android:textColor="@color/text"
         android:hint="@string/amount"/>
 
     <EditText
@@ -80,6 +85,7 @@
         android:paddingBottom="10dp"
         android:background="@color/white"
         android:textSize="25sp"
+        android:textColor="@color/text"
         android:hint="@string/memo"/>
 
     <LinearLayout

@@ -14,6 +14,7 @@
 
     <color name="currently">#ffeff7</color>
     <color name="future">#efefff</color>
+    <color name="line">#f1f1f1</color>
 
     <!--   color for the app bar and other primary UI elements -->
     <color name="primary">#c0c0c0</color>
