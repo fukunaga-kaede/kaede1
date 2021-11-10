@@ -76,6 +76,8 @@
         android:id="@+id/addClick"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginRight="100dp"
+        android:layout_marginLeft="100dp"
         android:text="@string/add"
         android:textSize="25sp"
         android:backgroundTint="@color/currently_button"/>

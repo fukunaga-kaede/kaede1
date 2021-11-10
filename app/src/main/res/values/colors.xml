@@ -8,12 +8,10 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-
-    <color name="currently_button">#adadff</color>
-    <color name="future_button">#ffadd6</color>
-
     <color name="currently">#efefff</color>
+    <color name="currently_button">#adadff</color>
     <color name="future">#ffeff7</color>
+    <color name="future_button">#ffadd6</color>
     <color name="line">#f1f1f1</color>
 
     <!--   color for the app bar and other primary UI elements -->

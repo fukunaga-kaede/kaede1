@@ -61,18 +61,39 @@
 
     </RadioGroup>
 
-    <EditText
-        android:id="@+id/inputAmount"
+
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/edittext_design"
+        android:orientation="horizontal">
+
+        <EditText
+        android:id="@+id/inputAmount"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
         android:layout_marginTop="0dp"
         android:layout_marginBottom="0dp"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
-        android:background="@drawable/edittext_design"
         android:textSize="25sp"
-        android:textColor="@color/text"
+        android:background="#00000000"
         android:hint="@string/amount"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:layout_gravity="right"
+            android:textSize="25sp"
+            android:text="円"/>
+
+    </LinearLayout>
+
+
 
     <EditText
         android:id="@+id/inputMemo"
@@ -101,6 +122,8 @@
             android:layout_weight="0.5"
             android:paddingTop="10dp"
             android:paddingBottom="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="20dp"
             android:backgroundTint="@color/currently_button"
             android:onClick="onBackButtonClick"
             android:text="@string/back_button"/>
@@ -112,6 +135,8 @@
             android:layout_weight="0.5"
             android:paddingTop="10dp"
             android:paddingBottom="10dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="10dp"
             android:backgroundTint="@color/currently_button"
             android:text="@string/input"/>
 
