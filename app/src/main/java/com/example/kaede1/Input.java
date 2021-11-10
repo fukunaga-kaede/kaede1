@@ -73,6 +73,7 @@ public class Input extends AppCompatActivity {
             } else {
                 // 何も選択されていない場合の処理
                 // トーストを作る
+                // あいうえお
             }
 
 
