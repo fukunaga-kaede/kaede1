@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class Fix extends AppCompatActivity {
 
@@ -82,39 +83,35 @@ public class Fix extends AppCompatActivity {
 
             int checkedId = radioGroup.getCheckedRadioButtonId();
 
-            if (checkedId != -1) {
-                // 選択されているラジオボタンの取得
-                RadioButton radioButton = (RadioButton) findViewById(checkedId);
+            // 選択されているラジオボタンの取得
+            RadioButton radioButton = (RadioButton) findViewById(checkedId);
 
-                // ラジオボタンのテキストを取得
-                String text = radioButton.getText().toString();
+            // ラジオボタンのテキストを取得
+            String text = radioButton.getText().toString();
 
-                // 入力内容を取得
-                TextView fixDateText = findViewById(R.id.fixDate);
-                TextView fixItemText = findViewById(R.id.fixItem);
-                TextView fixItemAmount = findViewById(R.id.fixAmount);
-                TextView fixItemMemo = findViewById(R.id.fixMemo);
+            // 入力内容を取得
+            TextView fixDateText = findViewById(R.id.fixDate);
+            TextView fixItemText = findViewById(R.id.fixItem);
+            TextView fixItemAmount = findViewById(R.id.fixAmount);
+            TextView fixItemMemo = findViewById(R.id.fixMemo);
 
-                String fixDate = fixDateText.getText().toString();
-                String fixItem = fixItemText.getText().toString();
-                String fixAmount = fixItemAmount.getText().toString();
-                String fixMemo = fixItemMemo.getText().toString();
+            String fixDate = fixDateText.getText().toString();
+            String fixItem = fixItemText.getText().toString();
+            String fixAmount = fixItemAmount.getText().toString();
+            String fixMemo = fixItemMemo.getText().toString();
 
 
-                // 金額の符号を設定
-                if(fixAmount.equals("支出")) {
-                    int fixAmountInt = Integer.parseInt(fixAmount);
-                    fixAmountInt *= -1;
-                    fixAmount = Integer.toString(fixAmountInt);
-                }
-
-                // SQL
-
-                finish();
-            } else {
-                // 何も選択されていない場合の処理
-                // トーストを作る
+            // 金額の符号を設定
+            if(fixAmount.equals("支出")) {
+                int fixAmountInt = Integer.parseInt(fixAmount);
+                fixAmountInt *= -1;
+                fixAmount = Integer.toString(fixAmountInt);
             }
+
+            // SQL
+
+            Intent intent = new Intent(Fix.this, Look.class);
+            startActivity(intent);
         }
     }
 
@@ -124,7 +121,10 @@ public class Fix extends AppCompatActivity {
         public void onClick (View view) {
             // DBの更新処理
 
-            finish();
+            // finish();
+
+            Intent intent = new Intent(Fix.this, Look.class);
+            startActivity(intent);
         }
     }
 }

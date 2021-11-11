@@ -34,6 +34,90 @@ public class Look extends AppCompatActivity {
 
         menu = new HashMap<>();
         menu.put("date","12月12日");
+        menu.put("item","給料");
+        menu.put("memo","マック");
+        menu.put("amount","5000");
+        menuList.add(menu);
+
+        menu = new HashMap<>();
+        menu.put("date","12月12日");
+        menu.put("item","給料");
+        menu.put("memo","マック");
+        menu.put("amount","5000");
+        menuList.add(menu);
+
+        menu = new HashMap<>();
+        menu.put("date","12月12日");
+        menu.put("item","給料");
+        menu.put("memo","マック");
+        menu.put("amount","5000");
+        menuList.add(menu);
+
+        menu = new HashMap<>();
+        menu.put("date","12月12日");
+        menu.put("item","給料");
+        menu.put("memo","マック");
+        menu.put("amount","5000");
+        menuList.add(menu);
+
+        menu = new HashMap<>();
+        menu.put("date","12月12日");
+        menu.put("item","給料");
+        menu.put("memo","マック");
+        menu.put("amount","5000");
+        menuList.add(menu);
+
+        menu = new HashMap<>();
+        menu.put("date","12月12日");
+        menu.put("item","給料");
+        menu.put("memo","マック");
+        menu.put("amount","5000");
+        menuList.add(menu);
+
+        menu = new HashMap<>();
+        menu.put("date","12月12日");
+        menu.put("item","給料");
+        menu.put("memo","マック");
+        menu.put("amount","5000");
+        menuList.add(menu);
+
+        menu = new HashMap<>();
+        menu.put("date","12月12日");
+        menu.put("item","給料");
+        menu.put("memo","マック");
+        menu.put("amount","5000");
+        menuList.add(menu);
+
+        menu = new HashMap<>();
+        menu.put("date","12月12日");
+        menu.put("item","給料");
+        menu.put("memo","マック");
+        menu.put("amount","5000");
+        menuList.add(menu);
+
+        menu = new HashMap<>();
+        menu.put("date","12月12日");
+        menu.put("item","給料");
+        menu.put("memo","マック");
+        menu.put("amount","5000");
+        menuList.add(menu);
+
+        menu = new HashMap<>();
+        menu.put("date","12月12日");
+        menu.put("item","給料");
+        menu.put("memo","マック");
+        menu.put("amount","5000");
+        menuList.add(menu);
+
+        menu = new HashMap<>();
+        menu.put("date","12月12日");
+        menu.put("item","給料");
+        menu.put("memo","マック");
+        menu.put("amount","5000");
+        menuList.add(menu);
+
+        menu = new HashMap<>();
+        menu.put("date","12月12日");
         menu.put("item","服");
         menu.put("memo","UNIQLO");
         menu.put("amount","-2000");

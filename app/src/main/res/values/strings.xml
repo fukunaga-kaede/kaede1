@@ -12,6 +12,6 @@
     <string name="item">項目</string>
     <string name="amount">金額</string>
     <string name="memo">メモ</string>
-
+    <string name="toast_radio">「支出」「収入」を選択して下さい</string>
 
 </resources>

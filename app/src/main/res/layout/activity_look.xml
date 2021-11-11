@@ -4,28 +4,28 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/currently">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:paddingTop="10dp"
-        android:paddingBottom="10dp"
-        android:background="@color/currently">
+        android:paddingBottom="10dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/total"
-            android:textSize="30sp" />
+            android:textSize="27sp" />
 
         <TextView
             android:id="@+id/look_total"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:textSize="30sp" />
+            android:textSize="27sp" />
 
     </LinearLayout>
 
@@ -35,34 +35,33 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:paddingTop="10dp"
-        android:paddingBottom="10dp"
-        android:background="@color/currently">
+        android:paddingBottom="10dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/income"
-            android:textSize="30sp" />
+            android:textSize="27sp" />
 
         <TextView
             android:id="@+id/look_income"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
-            android:textSize="30sp" />
+            android:textSize="27sp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/expenditure"
-            android:textSize="30sp" />
+            android:textSize="27sp" />
 
         <TextView
             android:id="@+id/look_expenditure"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
-            android:textSize="30sp" />
+            android:textSize="27sp" />
 
     </LinearLayout>
 
@@ -70,16 +69,20 @@
         android:id="@+id/look_list"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1" />
+        android:layout_weight="1"
+        android:background="@color/white"/>
 
     <Button
         android:id="@+id/addClick"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginRight="100dp"
-        android:layout_marginLeft="100dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:layout_marginRight="130dp"
+        android:layout_marginLeft="130dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
         android:text="@string/add"
-        android:textSize="25sp"
         android:backgroundTint="@color/currently_button"/>
 
 </LinearLayout>

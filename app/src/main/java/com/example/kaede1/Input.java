@@ -2,12 +2,14 @@ package com.example.kaede1;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class Input extends AppCompatActivity {
 
@@ -60,7 +62,7 @@ public class Input extends AppCompatActivity {
 
 
                 // 金額の符号を設定
-                if(inputAmount.equals("支出")) {
+                if(text.equals("支出")) {
                     int inputAmountInt = Integer.parseInt(inputAmount);
                     inputAmountInt *= -1;
                     inputAmount = Integer.toString(inputAmountInt);
@@ -68,12 +70,13 @@ public class Input extends AppCompatActivity {
 
                 // SQL
 
-                finish();
+                Intent intent = new Intent(Input.this, Look.class);
+                startActivity(intent);
 
             } else {
-                // 何も選択されていない場合の処理
-                // トーストを作る
-                // あいうえお
+                // ラジオボタンが選択されていない場合の処理
+                // トーストを表示
+                Toast.makeText(Input.this, R.string.toast_radio, Toast.LENGTH_LONG).show();
             }
 
 
