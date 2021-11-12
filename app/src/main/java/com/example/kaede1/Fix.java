@@ -13,7 +13,10 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.SimpleDateFormat;
+import java.time.DayOfWeek;
 import java.util.Calendar;
+import java.util.Date;
 
 public class Fix extends AppCompatActivity {
 
@@ -55,8 +58,46 @@ public class Fix extends AppCompatActivity {
         // テキストをxmlファイルにセット
         fixDateText.setText(fixDate);
         fixItemText.setText(fixItem);
-        fixAmountText.setText(fixAmount + "円");
+        fixAmountText.setText(fixAmount);
         fixMemoText.setText(fixMemo);
+
+
+        //EditTextにリスナーをつける
+        fixDateText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // 今日の日付取得
+                //Calendarインスタンスを取得
+                /*Calendar date = Calendar.getInstance();
+                        date.get(Calendar.YEAR);
+                        date.get(Calendar.MONTH);
+                        date.get(Calendar.DATE);
+                        int a = date.get(Calendar.DAY_OF_WEEK);*/
+
+
+                //DatePickerDialogインスタンスを取得
+                DatePickerDialog datePickerDialog = new DatePickerDialog(
+                        Fix.this,
+                        new DatePickerDialog.OnDateSetListener() {
+                            @Override
+                            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                                //setした日付を取得して表示
+                                fixDateText.setText(String.format("%d / %02d / %02d", year, month+1, dayOfMonth));
+                            }
+                        },
+                        // 初期値セット
+
+                        2021,9,12
+                );
+
+                //dialogを表示
+                datePickerDialog.show();
+            }
+
+
+
+        });
+
 
         // 修正ボタンの取得
         Button fixClick = findViewById(R.id.fixClick);

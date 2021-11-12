@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
-import android.icu.util.Calendar;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -15,7 +14,11 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.Calendar;
+
 public class Input extends AppCompatActivity {
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,40 +33,36 @@ public class Input extends AppCompatActivity {
         inputClick.setOnClickListener(input_listener);
 
         //部品の取得
-        TextView inputDate = (EditText) findViewById(R.id.inputDate);
+        TextView inputDateText =  findViewById(R.id.inputDate);
 
         //EditTextにリスナーをつける
-        inputDate.setOnClickListener(new View.OnClickListener() {
+        inputDateText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //Calendarインスタンスを取得
-                final Calendar date;
-                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
-                    date = Calendar.getInstance();
+                Calendar date = Calendar.getInstance();
 
-                    //DatePickerDialogインスタンスを取得
-                    DatePickerDialog datePickerDialog = new DatePickerDialog(
-                            Input.this,
-                            new DatePickerDialog.OnDateSetListener() {
-                                @Override
-                                public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                                    //setした日付を取得して表示
-                                    // inputDate.setText(String.format("%d / %02d / %02d", year, month+1, dayOfMonth));
-                                    inputDate.setText(String.format("%02d 月 %02d日", month+1, dayOfMonth));
-                                }
-                            },
-                            date.get(Calendar.YEAR),
-                            date.get(Calendar.MONTH),
-                            date.get(Calendar.DATE)
+                //DatePickerDialogインスタンスを取得
+                DatePickerDialog datePickerDialog = new DatePickerDialog(
+                        Input.this,
+                        new DatePickerDialog.OnDateSetListener() {
+                            @Override
+                            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                                //setした日付を取得して表示
+                                inputDateText.setText(String.format("%d / %02d / %02d", year, month+1, dayOfMonth));
+                            }
+                        },
+                        date.get(Calendar.YEAR),
+                        date.get(Calendar.MONTH),
+                        date.get(Calendar.DATE)
                     );
 
-                    //dialogを表示
-                    datePickerDialog.show();
-                }
-
-
-
+                //dialogを表示
+                datePickerDialog.show();
             }
+
+
+
         });
     }
 
@@ -91,7 +90,7 @@ public class Input extends AppCompatActivity {
                 // ラジオボタンのテキストを取得
                 String text = radioButton.getText().toString();
 
-                // 入力内容を取得
+
                 TextView inputDateText = findViewById(R.id.inputDate);
                 TextView inputItemText = findViewById(R.id.inputItem);
                 TextView inputItemAmount = findViewById(R.id.inputAmount);
