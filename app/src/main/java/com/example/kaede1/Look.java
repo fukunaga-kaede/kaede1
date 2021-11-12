@@ -26,6 +26,7 @@ public class Look extends AppCompatActivity {
         List<Map<String, String>> menuList = new ArrayList<>();
 
         Map<String,String> menu = new HashMap<>();
+        // 実験
         menu.put("date","12月12日");
         menu.put("item","給料");
         menu.put("memo","マック");
