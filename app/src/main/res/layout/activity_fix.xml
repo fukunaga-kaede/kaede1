@@ -46,17 +46,27 @@
         <RadioButton
             android:id="@+id/flgExpenditure"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.5"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            android:background="@drawable/radio_currently"
             android:textColor="@color/text"
+            android:button="@null"
+            android:gravity="center"
             android:text="@string/expenditure"/>
 
         <RadioButton
             android:id="@+id/flgIncome"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.5"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            android:background="@drawable/radio_currently"
             android:textColor="@color/text"
+            android:button="@null"
+            android:gravity="center"
             android:text="@string/income"/>
 
     </RadioGroup>
