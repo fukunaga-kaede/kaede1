@@ -2,10 +2,14 @@ package com.example.kaede1;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.icu.util.Calendar;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -24,6 +28,43 @@ public class Input extends AppCompatActivity {
         InputClickListener input_listener = new InputClickListener();
         // 保存ボタンにリスナを設定
         inputClick.setOnClickListener(input_listener);
+
+        //部品の取得
+        TextView inputDate = (EditText) findViewById(R.id.inputDate);
+
+        //EditTextにリスナーをつける
+        inputDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Calendarインスタンスを取得
+                final Calendar date;
+                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+                    date = Calendar.getInstance();
+
+                    //DatePickerDialogインスタンスを取得
+                    DatePickerDialog datePickerDialog = new DatePickerDialog(
+                            Input.this,
+                            new DatePickerDialog.OnDateSetListener() {
+                                @Override
+                                public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                                    //setした日付を取得して表示
+                                    // inputDate.setText(String.format("%d / %02d / %02d", year, month+1, dayOfMonth));
+                                    inputDate.setText(String.format("%02d 月 %02d日", month+1, dayOfMonth));
+                                }
+                            },
+                            date.get(Calendar.YEAR),
+                            date.get(Calendar.MONTH),
+                            date.get(Calendar.DATE)
+                    );
+
+                    //dialogを表示
+                    datePickerDialog.show();
+                }
+
+
+
+            }
+        });
     }
 
     // 戻るボタンを押した場合の処理
@@ -31,6 +72,7 @@ public class Input extends AppCompatActivity {
 
         finish();
     }
+
 
     // 保存ボタンを押した場合の処理
     private class InputClickListener implements View.OnClickListener {
