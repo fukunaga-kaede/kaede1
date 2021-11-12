@@ -11,6 +11,8 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.Calendar;
+
 public class Fix extends AppCompatActivity {
 
     @Override
@@ -26,6 +28,7 @@ public class Fix extends AppCompatActivity {
         String fixMemo = intent.getStringExtra("fixMemo");
 
 
+        Calendar calendar = Calendar.getInstance();
 
         TextView fixDateText = findViewById(R.id.fixDate);
         TextView fixItemText = findViewById(R.id.fixItem);
@@ -66,6 +69,8 @@ public class Fix extends AppCompatActivity {
         DeleteClickListener delete_listener = new DeleteClickListener();
         // 削除ボタンにリスナを設定
         deleteClick.setOnClickListener(delete_listener);
+
+        
     }
 
     // 戻るボタンを押した場合の処理
