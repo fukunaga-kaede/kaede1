@@ -2,10 +2,12 @@ package com.example.kaede1;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -70,7 +72,8 @@ public class Fix extends AppCompatActivity {
         // 削除ボタンにリスナを設定
         deleteClick.setOnClickListener(delete_listener);
 
-        
+
+
     }
 
     // 戻るボタンを押した場合の処理
