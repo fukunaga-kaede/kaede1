@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -34,6 +35,7 @@ public class Input extends AppCompatActivity {
         InputClickListener input_listener = new InputClickListener();
         // 保存ボタンにリスナを設定
         inputClick.setOnClickListener(input_listener);
+
 
         //部品の取得
         TextView inputDateText =  findViewById(R.id.inputDate);
