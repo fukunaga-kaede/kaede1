@@ -20,6 +20,10 @@ import java.util.Date;
 
 public class Fix extends AppCompatActivity {
 
+    int newYear;
+    int newMonth;
+    int newDay;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,18 +65,17 @@ public class Fix extends AppCompatActivity {
         fixAmountText.setText(fixAmount);
         fixMemoText.setText(fixMemo);
 
+        // DBの日時の分割（初期値用）
+        String[] strDate = fixDate.split("/");
+        newYear = Integer.parseInt(strDate[0]);
+        int Month = Integer.parseInt(strDate[1]);
+        newMonth = Month - 1;
+        newDay = Integer.parseInt(strDate[2]);
 
         //EditTextにリスナーをつける
         fixDateText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // 今日の日付取得
-                //Calendarインスタンスを取得
-                /*Calendar date = Calendar.getInstance();
-                        date.get(Calendar.YEAR);
-                        date.get(Calendar.MONTH);
-                        date.get(Calendar.DATE);
-                        int a = date.get(Calendar.DAY_OF_WEEK);*/
 
 
                 //DatePickerDialogインスタンスを取得
@@ -83,11 +86,13 @@ public class Fix extends AppCompatActivity {
                             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
                                 //setした日付を取得して表示
                                 fixDateText.setText(String.format("%d / %02d / %02d", year, month+1, dayOfMonth));
+                                newYear = year;
+                                newMonth = month;
+                                newDay = dayOfMonth;
                             }
                         },
                         // 初期値セット
-
-                        2021,9,12
+                        newYear,newMonth,newDay
                 );
 
                 //dialogを表示

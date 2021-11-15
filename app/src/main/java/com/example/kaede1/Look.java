@@ -28,102 +28,21 @@ public class Look extends AppCompatActivity {
         Map<String,String> menu = new HashMap<>();
         // 実験
         // あいうえお
-        menu.put("date","12月12日");
-        menu.put("item","給料");
-        menu.put("memo","マック");
-        menu.put("amount","5000");
-        menuList.add(menu);
-
-        menu = new HashMap<>();
-        menu.put("date","12月12日");
-        menu.put("item","給料");
-        menu.put("memo","マック");
-        menu.put("amount","5000");
-        menuList.add(menu);
-
-        menu = new HashMap<>();
-        menu.put("date","12月12日");
-        menu.put("item","給料");
-        menu.put("memo","マック");
-        menu.put("amount","5000");
-        menuList.add(menu);
-
-        menu = new HashMap<>();
-        menu.put("date","12月12日");
-        menu.put("item","給料");
-        menu.put("memo","マック");
-        menu.put("amount","5000");
-        menuList.add(menu);
-
-        menu = new HashMap<>();
-        menu.put("date","12月12日");
-        menu.put("item","給料");
-        menu.put("memo","マック");
-        menu.put("amount","5000");
-        menuList.add(menu);
-
-        menu = new HashMap<>();
-        menu.put("date","12月12日");
-        menu.put("item","給料");
-        menu.put("memo","マック");
-        menu.put("amount","5000");
-        menuList.add(menu);
-
-        menu = new HashMap<>();
-        menu.put("date","12月12日");
-        menu.put("item","給料");
-        menu.put("memo","マック");
-        menu.put("amount","5000");
-        menuList.add(menu);
-
-        menu = new HashMap<>();
-        menu.put("date","12月12日");
-        menu.put("item","給料");
-        menu.put("memo","マック");
-        menu.put("amount","5000");
-        menuList.add(menu);
-
-        menu = new HashMap<>();
-        menu.put("date","12月12日");
-        menu.put("item","給料");
-        menu.put("memo","マック");
-        menu.put("amount","5000");
-        menuList.add(menu);
-
-        menu = new HashMap<>();
-        menu.put("date","12月12日");
-        menu.put("item","給料");
-        menu.put("memo","マック");
-        menu.put("amount","5000");
-        menuList.add(menu);
-
-        menu = new HashMap<>();
-        menu.put("date","12月12日");
-        menu.put("item","給料");
-        menu.put("memo","マック");
-        menu.put("amount","5000");
-        menuList.add(menu);
-
-        menu = new HashMap<>();
-        menu.put("date","12月12日");
-        menu.put("item","給料");
-        menu.put("memo","マック");
-        menu.put("amount","5000");
-        menuList.add(menu);
-
-        menu = new HashMap<>();
-        menu.put("date","12月12日");
-        menu.put("item","給料");
-        menu.put("memo","マック");
-        menu.put("amount","5000");
-        menuList.add(menu);
-
-        menu = new HashMap<>();
-        menu.put("date","12月12日");
+        menu.put("date","2021/11/1");
         menu.put("item","服");
         menu.put("memo","UNIQLO");
-        menu.put("amount","-2000");
+        menu.put("amount","-10000");
         menuList.add(menu);
+
+        menu = new HashMap<>();
+        menu.put("date","2021/11/15");
+        menu.put("item","給料");
+        menu.put("memo","マック");
+        menu.put("amount","5000");
+        menuList.add(menu);
+
+
+
 
 
         String[] from = {"item","memo","amount"};

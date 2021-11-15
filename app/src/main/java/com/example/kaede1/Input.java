@@ -18,6 +18,9 @@ import java.util.Calendar;
 
 public class Input extends AppCompatActivity {
 
+    int newYear;
+    int newMonth;
+    int newDay;
 
 
     @Override
@@ -35,12 +38,18 @@ public class Input extends AppCompatActivity {
         //部品の取得
         TextView inputDateText =  findViewById(R.id.inputDate);
 
+        // 現在日時の取得
+        Calendar date = Calendar.getInstance();
+        newYear = date.get(Calendar.YEAR);
+        newMonth = date.get(Calendar.MONTH);
+        newDay = date.get(Calendar.DATE);
+
         //EditTextにリスナーをつける
         inputDateText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //Calendarインスタンスを取得
-                Calendar date = Calendar.getInstance();
+
 
                 //DatePickerDialogインスタンスを取得
                 DatePickerDialog datePickerDialog = new DatePickerDialog(
@@ -50,11 +59,12 @@ public class Input extends AppCompatActivity {
                             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
                                 //setした日付を取得して表示
                                 inputDateText.setText(String.format("%d / %02d / %02d", year, month+1, dayOfMonth));
+                                newYear = year;
+                                newMonth = month;
+                                newDay = dayOfMonth;
                             }
                         },
-                        date.get(Calendar.YEAR),
-                        date.get(Calendar.MONTH),
-                        date.get(Calendar.DATE)
+                        newYear,newMonth,newDay
                     );
 
                 //dialogを表示
