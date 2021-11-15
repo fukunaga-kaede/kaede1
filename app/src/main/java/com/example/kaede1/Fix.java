@@ -33,7 +33,7 @@ public class Fix extends AppCompatActivity {
 
         String fixDate = intent.getStringExtra("fixDate");
         String fixItem = intent.getStringExtra("fixItem");
-        String fixAmount = intent.getStringExtra("fixAmount");
+        int fixAmount = intent.getIntExtra("fixAmount",0);
         String fixMemo = intent.getStringExtra("fixMemo");
 
 
@@ -46,10 +46,7 @@ public class Fix extends AppCompatActivity {
         // ラジオグループのオブジェクトを取得
         RadioGroup rg = findViewById(R.id.flgIncomeExpenditure);
 
-        // 金額をint型に変更
-        int fixAmountInt = Integer.parseInt(fixAmount);
-
-        if(fixAmountInt >= 0) {
+        if(fixAmount >= 0) {
             // 収入（金額が正の数の場合の処理）
             rg.check(R.id.flgIncome);
 
@@ -62,7 +59,7 @@ public class Fix extends AppCompatActivity {
         // テキストをxmlファイルにセット
         fixDateText.setText(fixDate);
         fixItemText.setText(fixItem);
-        fixAmountText.setText(fixAmount);
+        fixAmountText.setText(Integer.toString(fixAmount));
         fixMemoText.setText(fixMemo);
 
         // DBの日時の分割（初期値用）
@@ -146,20 +143,19 @@ public class Fix extends AppCompatActivity {
             // 入力内容を取得
             TextView fixDateText = findViewById(R.id.fixDate);
             TextView fixItemText = findViewById(R.id.fixItem);
-            TextView fixItemAmount = findViewById(R.id.fixAmount);
-            TextView fixItemMemo = findViewById(R.id.fixMemo);
+            TextView fixAmountText = findViewById(R.id.fixAmount);
+            TextView fixMemoText = findViewById(R.id.fixMemo);
 
             String fixDate = fixDateText.getText().toString();
             String fixItem = fixItemText.getText().toString();
-            String fixAmount = fixItemAmount.getText().toString();
-            String fixMemo = fixItemMemo.getText().toString();
+            int fixAmount = Integer.parseInt(fixAmountText.getText().toString());
+            String fixMemo = fixMemoText.getText().toString();
+
 
 
             // 金額の符号を設定
-            if(fixAmount.equals("支出")) {
-                int fixAmountInt = Integer.parseInt(fixAmount);
-                fixAmountInt *= -1;
-                fixAmount = Integer.toString(fixAmountInt);
+            if(text.equals("支出")) {
+                fixAmount *= -1;
             }
 
             // SQL

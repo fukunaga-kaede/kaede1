@@ -103,20 +103,18 @@ public class Input extends AppCompatActivity {
 
                 TextView inputDateText = findViewById(R.id.inputDate);
                 TextView inputItemText = findViewById(R.id.inputItem);
-                TextView inputItemAmount = findViewById(R.id.inputAmount);
-                TextView inputItemMemo = findViewById(R.id.inputMemo);
+                TextView inputAmountText = findViewById(R.id.inputAmount);
+                TextView inputMemoText = findViewById(R.id.inputMemo);
 
                 String inputDate = inputDateText.getText().toString();
                 String inputItem = inputItemText.getText().toString();
-                String inputAmount = inputItemAmount.getText().toString();
-                String inputMemo = inputItemMemo.getText().toString();
+                int inputAmount = Integer.parseInt(inputAmountText.getText().toString());
+                String inputMemo = inputMemoText.getText().toString();
 
 
                 // 金額の符号を設定
                 if(text.equals("支出")) {
-                    int inputAmountInt = Integer.parseInt(inputAmount);
-                    inputAmountInt *= -1;
-                    inputAmount = Integer.toString(inputAmountInt);
+                    inputAmount *= -1;
                 }
 
                 // SQL

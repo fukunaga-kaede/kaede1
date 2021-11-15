@@ -11,6 +11,7 @@ import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -23,25 +24,23 @@ public class Look extends AppCompatActivity {
         setContentView(R.layout.activity_look);
 
         ListView lvMenu = findViewById(R.id.look_list);
-        List<Map<String, String>> menuList = new ArrayList<>();
+        List<Map<String,Object>> menuList = new ArrayList<>();
 
-        Map<String,String> menu = new HashMap<>();
+        Map<String,Object> menu = new HashMap<>();
         // 実験
         // あいうえお
         menu.put("date","2021/11/1");
         menu.put("item","服");
         menu.put("memo","UNIQLO");
-        menu.put("amount","-10000");
+        menu.put("amount",1000);
         menuList.add(menu);
 
         menu = new HashMap<>();
         menu.put("date","2021/11/15");
         menu.put("item","給料");
         menu.put("memo","マック");
-        menu.put("amount","5000");
+        menu.put("amount",5000);
         menuList.add(menu);
-
-
 
 
 
@@ -64,14 +63,13 @@ public class Look extends AppCompatActivity {
     private class ListItemClickListener implements AdapterView.OnItemClickListener {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-            Map<String, String> item = (Map<String, String>)parent.getItemAtPosition(position);
+            Map<String, Object> item = (Map<String, Object>)parent.getItemAtPosition(position);
 
-            String fixDate = item.get("date");
-            String fixItem = item.get("item");
-            String fixMemo = item.get("memo");
-            String fixAmount = item.get("amount");
-
-
+            String fixDate = item.get("date").toString();
+            String fixItem = item.get("item").toString();
+            String fixMemo = item.get("memo").toString();
+            int fixAmount = Integer.parseInt(item.get("amount").toString());
+            // fix画面に送るデータの格納
             Intent intent = new Intent(Look.this, Fix.class);
 
             intent.putExtra("fixDate",fixDate);
