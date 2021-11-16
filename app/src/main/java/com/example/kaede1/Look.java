@@ -44,8 +44,8 @@ public class Look extends AppCompatActivity {
 
 
 
-        String[] from = {"item","memo","amount"};
-        int[] to = {R.id.display_item, R.id.display_memo,R.id.display_amount};
+        String[] from = {"date","item","memo","amount"};
+        int[] to = {R.id.display_date,R.id.display_item, R.id.display_memo,R.id.display_amount};
         SimpleAdapter adapter = new SimpleAdapter(Look.this,menuList,R.layout.row,from,to);
         lvMenu.setAdapter(adapter);
 

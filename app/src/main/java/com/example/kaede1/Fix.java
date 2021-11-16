@@ -3,11 +3,15 @@ package com.example.kaede1;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -24,6 +28,7 @@ public class Fix extends AppCompatActivity {
     int newMonth;
     int newDay;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,8 +41,6 @@ public class Fix extends AppCompatActivity {
         int fixAmount = intent.getIntExtra("fixAmount",0);
         String fixMemo = intent.getStringExtra("fixMemo");
 
-
-        Calendar calendar = Calendar.getInstance();
 
         TextView fixDateText = findViewById(R.id.fixDate);
         TextView fixItemText = findViewById(R.id.fixItem);
@@ -54,7 +57,6 @@ public class Fix extends AppCompatActivity {
             // 支出（金額が負の数の場合の処理）
             rg.check(R.id.flgExpenditure);
         }
-
 
         // テキストをxmlファイルにセット
         fixDateText.setText(fixDate);
@@ -74,7 +76,6 @@ public class Fix extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-
                 //DatePickerDialogインスタンスを取得
                 DatePickerDialog datePickerDialog = new DatePickerDialog(
                         Fix.this,
@@ -83,6 +84,8 @@ public class Fix extends AppCompatActivity {
                             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
                                 //setした日付を取得して表示
                                 fixDateText.setText(String.format("%d / %02d / %02d", year, month+1, dayOfMonth));
+
+                                // 初期選択日付を選択日付に更新
                                 newYear = year;
                                 newMonth = month;
                                 newDay = dayOfMonth;
@@ -95,8 +98,6 @@ public class Fix extends AppCompatActivity {
                 //dialogを表示
                 datePickerDialog.show();
             }
-
-
 
         });
 
@@ -115,8 +116,6 @@ public class Fix extends AppCompatActivity {
         // 削除ボタンにリスナを設定
         deleteClick.setOnClickListener(delete_listener);
 
-
-
     }
 
     // 戻るボタンを押した場合の処理
@@ -129,39 +128,47 @@ public class Fix extends AppCompatActivity {
     private class FixClickListenerListener implements View.OnClickListener {
         @Override
         public void onClick (View view) {
-            // ラジオボタンの内容で金額場合分け
-            RadioGroup radioGroup = (RadioGroup) findViewById(R.id.flgIncomeExpenditure);
 
-            int checkedId = radioGroup.getCheckedRadioButtonId();
-
-            // 選択されているラジオボタンの取得
-            RadioButton radioButton = (RadioButton) findViewById(checkedId);
-
-            // ラジオボタンのテキストを取得
-            String text = radioButton.getText().toString();
-
-            // 入力内容を取得
-            TextView fixDateText = findViewById(R.id.fixDate);
-            TextView fixItemText = findViewById(R.id.fixItem);
+            // 金額の入力内容をString型で取得
             TextView fixAmountText = findViewById(R.id.fixAmount);
-            TextView fixMemoText = findViewById(R.id.fixMemo);
+            String fixAmountString = fixAmountText.getText().toString();
 
-            String fixDate = fixDateText.getText().toString();
-            String fixItem = fixItemText.getText().toString();
-            int fixAmount = Integer.parseInt(fixAmountText.getText().toString());
-            String fixMemo = fixMemoText.getText().toString();
+            if (fixAmountString.equals("")){
+                // 金額が入力されていない場合の処理
+                // トーストを表示
+                Toast.makeText(Fix.this, R.string.toast_amount, Toast.LENGTH_LONG).show();
+            } else {
+                // 選択されているラジオボタンの取得
+                RadioGroup radioGroup = (RadioGroup) findViewById(R.id.flgIncomeExpenditure);
+
+                int checkedId = radioGroup.getCheckedRadioButtonId();
+
+                RadioButton radioButton = (RadioButton) findViewById(checkedId);
+
+                // ラジオボタンのテキストを取得
+                String text = radioButton.getText().toString();
+
+                // 入力内容を取得
+                TextView fixDateText = findViewById(R.id.fixDate);
+                TextView fixItemText = findViewById(R.id.fixItem);
+                TextView fixMemoText = findViewById(R.id.fixMemo);
+
+                String fixDate = fixDateText.getText().toString();
+                String fixItem = fixItemText.getText().toString();
+                int fixAmount = Integer.parseInt(fixAmountString);
+                String fixMemo = fixMemoText.getText().toString();
 
 
+                // 金額の符号を設定
+                if (text.equals("支出")) {
+                    fixAmount *= -1;
+                }
 
-            // 金額の符号を設定
-            if(text.equals("支出")) {
-                fixAmount *= -1;
+                // SQL
+
+                Intent intent = new Intent(Fix.this, Look.class);
+                startActivity(intent);
             }
-
-            // SQL
-
-            Intent intent = new Intent(Fix.this, Look.class);
-            startActivity(intent);
         }
     }
 
@@ -171,10 +178,10 @@ public class Fix extends AppCompatActivity {
         public void onClick (View view) {
             // DBの更新処理
 
-            // finish();
 
             Intent intent = new Intent(Fix.this, Look.class);
             startActivity(intent);
         }
     }
+
 }
