@@ -1,162 +1,170 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@color/currently">
-
-
-    <EditText
-        android:id="@+id/inputDate"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="0dp"
-        android:layout_marginBottom="40dp"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
-        android:background="@drawable/part_design"
-        android:textSize="25sp"
-        android:hint="@string/date"/>
-
-    <EditText
-        android:id="@+id/inputItem"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="0dp"
-        android:layout_marginBottom="0dp"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
-        android:background="@drawable/part_design"
-        android:textSize="25sp"
-        android:textColor="@color/text"
-        android:hint="@string/item"/>
-
-    <RadioGroup
-        android:id="@+id/flgIncomeExpenditure"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="0dp"
-        android:layout_marginBottom="0dp"
-        android:paddingTop="5dp"
-        android:paddingBottom="5dp"
-        android:background="@color/white"
-        android:orientation="horizontal">
-
-        <RadioButton
-            android:id="@+id/flgExpenditure"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:layout_marginRight="20dp"
-            android:layout_marginLeft="20dp"
-            android:background="@drawable/radio_currently"
-            android:textColor="@color/text"
-            android:button="@null"
-            android:gravity="center"
-            android:text="@string/expenditure"/>
-
-
-
-        <RadioButton
-            android:id="@+id/flgIncome"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:layout_marginRight="20dp"
-            android:layout_marginLeft="20dp"
-            android:background="@drawable/radio_currently"
-            android:textColor="@color/text"
-            android:button="@null"
-            android:gravity="center"
-            android:text="@string/income"/>
-
-    </RadioGroup>
-
-
-
+    android:fillViewport="true"
+    android:layout_weight="1">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/part_design"
-        android:orientation="horizontal">
+        android:orientation="vertical"
+        android:background="@color/currently">
 
-        <EditText
-        android:id="@+id/inputAmount"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:layout_marginTop="0dp"
-        android:layout_marginBottom="0dp"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
-        android:textSize="25sp"
-        android:textColor="@color/text"
-        android:background="#00000000"
-        android:hint="@string/amount"/>
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:id="@+id/inputDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
+            android:layout_marginBottom="40dp"
             android:paddingTop="10dp"
             android:paddingBottom="10dp"
-            android:layout_gravity="right"
+            android:background="@drawable/part_design"
+            android:textSize="25sp"
+            android:inputType="none"
+            android:hint="@string/date"/>
+
+        <EditText
+            android:id="@+id/inputItem"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
+            android:layout_marginBottom="0dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:background="@drawable/part_design"
             android:textSize="25sp"
             android:textColor="@color/text"
-            android:text="円"/>
+            android:hint="@string/item"/>
 
-    </LinearLayout>
+        <RadioGroup
+            android:id="@+id/flgIncomeExpenditure"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
+            android:layout_marginBottom="0dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:background="@color/white"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/flgExpenditure"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp"
+                android:background="@drawable/radio_currently"
+                android:textColor="@color/text"
+                android:button="@null"
+                android:gravity="center"
+                android:text="@string/expenditure"/>
 
 
 
-    <EditText
-        android:id="@+id/inputMemo"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
-        android:background="@drawable/part_design"
-        android:textSize="25sp"
-        android:textColor="@color/text"
-        android:hint="@string/memo"/>
+            <RadioButton
+                android:id="@+id/flgIncome"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp"
+                android:background="@drawable/radio_currently"
+                android:textColor="@color/text"
+                android:button="@null"
+                android:gravity="center"
+                android:text="@string/income"/>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:layout_marginBottom="0dp"
-        android:orientation="horizontal">
+        </RadioGroup>
 
-        <Button
-            android:id="@+id/back_to_look"
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/part_design"
+            android:orientation="horizontal">
+
+            <EditText
+            android:id="@+id/inputAmount"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0.5"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginTop="0dp"
+            android:layout_marginBottom="0dp"
             android:paddingTop="10dp"
             android:paddingBottom="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginLeft="20dp"
-            android:backgroundTint="@color/currently_button"
-            android:onClick="onBackButtonClick"
-            android:text="@string/back_button"/>
+            android:textSize="25sp"
+            android:textColor="@color/text"
+            android:background="#00000000"
+            android:inputType="number"
+            android:hint="@string/amount"/>
 
-        <Button
-            android:id="@+id/inputClick"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0.5"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:layout_gravity="right"
+                android:textSize="25sp"
+                android:textColor="@color/text"
+                android:text="円"/>
+
+        </LinearLayout>
+
+
+
+        <EditText
+            android:id="@+id/inputMemo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
             android:paddingTop="10dp"
             android:paddingBottom="10dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginLeft="10dp"
-            android:backgroundTint="@color/currently_button"
-            android:text="@string/input"/>
+            android:background="@drawable/part_design"
+            android:textSize="25sp"
+            android:textColor="@color/text"
+            android:hint="@string/memo"/>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:layout_marginBottom="0dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/back_to_look"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="20dp"
+                android:backgroundTint="@color/currently_button"
+                android:onClick="onBackButtonClick"
+                android:text="@string/back_button"/>
+
+            <Button
+                android:id="@+id/inputClick"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="10dp"
+                android:backgroundTint="@color/currently_button"
+                android:text="@string/input"/>
+
+
+
+        </LinearLayout>
 
 
     </LinearLayout>
-
-
-</LinearLayout>
+</ScrollView>
