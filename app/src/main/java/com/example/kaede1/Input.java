@@ -29,8 +29,6 @@ public class Input extends AppCompatActivity {
     int newMonth;
     int newDay;
 
-    // private View mFocusView;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -81,51 +79,21 @@ public class Input extends AppCompatActivity {
 
         });
 
+        // 背景がタップされるとキーボードを閉じる
+        LinearLayout mainLayout = (LinearLayout)findViewById(R.id.mainLayout);
 
-
-        /*// 日付入力欄がタップされるとキーボードが閉じる
-        View mFocusView = findViewById(R.id.inputDate);
-        mFocusView.requestFocus();
-
-        //項目のフォーカスが外れるとキーボードが閉じる
-        EditText inputItem = (EditText)findViewById(R.id.inputItem);
-        inputItem.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+        mainLayout.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                if(!hasFocus) {
-                    // フォーカスが外れた場合キーボードを非表示にする
-                    InputMethodManager inputMethodMgr = (InputMethodManager)getSystemService(INPUT_METHOD_SERVICE);
-                    inputMethodMgr.hideSoftInputFromWindow(v.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
-
-                }
+            public void onClick(View v) {
+                // Whatever
+                InputMethodManager inputMethodMgr = (InputMethodManager)getSystemService(INPUT_METHOD_SERVICE);
+                inputMethodMgr.hideSoftInputFromWindow(v.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
             }
         });
 
-        //金額のフォーカスが外れるとキーボードが閉じる
-        EditText inputAmount = (EditText)findViewById(R.id.inputAmount);
-        inputAmount.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                if(!hasFocus) {
-                    // フォーカスが外れた場合キーボードを非表示にする
-                    InputMethodManager inputMethodMgr = (InputMethodManager)getSystemService(INPUT_METHOD_SERVICE);
-                    inputMethodMgr.hideSoftInputFromWindow(v.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
-                }
-            }
-        });
 
-        //メモのフォーカスが外れるとキーボードが閉じる
-        EditText inputMemo = (EditText)findViewById(R.id.inputMemo);
-        inputMemo.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                if(!hasFocus) {
-                    // フォーカスが外れた場合キーボードを非表示にする
-                    InputMethodManager inputMethodMgr = (InputMethodManager)getSystemService(INPUT_METHOD_SERVICE);
-                    inputMethodMgr.hideSoftInputFromWindow(v.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
-                }
-            }
-        });*/
+
+
     }
 
     // 戻るボタンを押した場合の処理

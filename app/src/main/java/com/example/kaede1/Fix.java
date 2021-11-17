@@ -122,6 +122,18 @@ public class Fix extends AppCompatActivity {
         // 削除ボタンにリスナを設定
         deleteClick.setOnClickListener(delete_listener);
 
+        // 背景がタップされるとキーボードを閉じる
+        LinearLayout mainLayout = (LinearLayout)findViewById(R.id.mainLayout);
+
+        mainLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Whatever
+                InputMethodManager inputMethodMgr = (InputMethodManager)getSystemService(INPUT_METHOD_SERVICE);
+                inputMethodMgr.hideSoftInputFromWindow(v.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+            }
+        });
+
     }
 
     // 戻るボタンを押した場合の処理
