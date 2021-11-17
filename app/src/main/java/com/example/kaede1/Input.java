@@ -82,6 +82,7 @@ public class Input extends AppCompatActivity {
         });
 
 
+
         /*// 日付入力欄がタップされるとキーボードが閉じる
         View mFocusView = findViewById(R.id.inputDate);
         mFocusView.requestFocus();
@@ -203,6 +204,7 @@ public class Input extends AppCompatActivity {
 
         }
     }
+
 
     /*@Override
     public boolean onTouchEvent(MotionEvent event) {

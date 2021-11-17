@@ -7,6 +7,8 @@
     <string name="fix">修正</string>
     <string name="delete">削除</string>
     <string name="input">保存</string>
+    <string name="positive_button">ＯＫ</string>
+    <string name="negative_button">キャンセル</string>
     <string name="back_button">←戻る</string>
     <string name="date">日付</string>
     <string name="item">項目</string>
@@ -14,5 +16,8 @@
     <string name="memo">メモ</string>
     <string name="toast_radio">「支出」「収入」を選択して下さい</string>
     <string name="toast_amount">金額を入力して下さい</string>
+    <string name="dialog_title">確認</string>
+    <string name="dialog_msg">このデータを削除します。\nよろしいですか？</string>
+
 
 </resources>
