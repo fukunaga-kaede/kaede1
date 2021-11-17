@@ -4,12 +4,15 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -69,15 +72,17 @@ public class Look extends AppCompatActivity {
             String fixItem = item.get("item").toString();
             String fixMemo = item.get("memo").toString();
             int fixAmount = Integer.parseInt(item.get("amount").toString());
+
             // fix画面に送るデータの格納
             Intent intent = new Intent(Look.this, Fix.class);
 
-            intent.putExtra("fixDate",fixDate);
-            intent.putExtra("fixItem",fixItem);
-            intent.putExtra("fixMemo",fixMemo);
-            intent.putExtra("fixAmount",fixAmount);
+            intent.putExtra("fixDate", fixDate);
+            intent.putExtra("fixItem", fixItem);
+            intent.putExtra("fixMemo", fixMemo);
+            intent.putExtra("fixAmount", fixAmount);
 
             startActivity(intent);
+
         }
     }
 

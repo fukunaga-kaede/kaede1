@@ -17,6 +17,7 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.DayOfWeek;
 import java.util.Calendar;
@@ -153,21 +154,28 @@ public class Fix extends AppCompatActivity {
                 TextView fixItemText = findViewById(R.id.fixItem);
                 TextView fixMemoText = findViewById(R.id.fixMemo);
 
-                String fixDate = fixDateText.getText().toString();
+                String fixDateString = fixDateText.getText().toString();
                 String fixItem = fixItemText.getText().toString();
                 int fixAmount = Integer.parseInt(fixAmountString);
                 String fixMemo = fixMemoText.getText().toString();
 
+                try {
+                    SimpleDateFormat sdFormat = new SimpleDateFormat("yyyy / MM / dd");
+                    Date inputDate = sdFormat.parse(fixDateString);
 
-                // 金額の符号を設定
-                if (text.equals("支出")) {
-                    fixAmount *= -1;
+                    // 金額の符号を設定
+                    if (text.equals("支出")) {
+                        fixAmount *= -1;
+                    }
+
+                    // SQL
+
+                    Intent intent = new Intent(Fix.this, Look.class);
+                    startActivity(intent);
+
+                } catch (ParseException e) {
+                    e.printStackTrace();
                 }
-
-                // SQL
-
-                Intent intent = new Intent(Fix.this, Look.class);
-                startActivity(intent);
             }
         }
     }

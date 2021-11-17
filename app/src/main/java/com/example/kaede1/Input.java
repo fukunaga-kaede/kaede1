@@ -18,7 +18,10 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 
 public class Input extends AppCompatActivity {
 
@@ -26,7 +29,7 @@ public class Input extends AppCompatActivity {
     int newMonth;
     int newDay;
 
-    private View mFocusView;
+    // private View mFocusView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,7 +82,7 @@ public class Input extends AppCompatActivity {
         });
 
 
-        // 日付入力欄がタップされるとキーボードが閉じる
+        /*// 日付入力欄がタップされるとキーボードが閉じる
         View mFocusView = findViewById(R.id.inputDate);
         mFocusView.requestFocus();
 
@@ -121,7 +124,7 @@ public class Input extends AppCompatActivity {
                     inputMethodMgr.hideSoftInputFromWindow(v.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
                 }
             }
-        });
+        });*/
     }
 
     // 戻るボタンを押した場合の処理
@@ -161,29 +164,39 @@ public class Input extends AppCompatActivity {
                 TextView inputMemoText = findViewById(R.id.inputMemo);
 
 
-                String inputDate = inputDateText.getText().toString();
+                String inputDateString = inputDateText.getText().toString();
                 String inputItem = inputItemText.getText().toString();
                 String inputMemo = inputMemoText.getText().toString();
 
-                // 選択されているラジオボタンの取得
-                RadioButton radioButton = (RadioButton) findViewById(checkedId);
+                try {
+                    SimpleDateFormat sdFormat = new SimpleDateFormat("yyyy / MM / dd");
+                    Date inputDate = sdFormat.parse(inputDateString);
 
-                // ラジオボタンのテキストを取得
-                String text = radioButton.getText().toString();
+                    // 選択されているラジオボタンの取得
+                    RadioButton radioButton = (RadioButton) findViewById(checkedId);
 
-                // 金額をint型に変換
-                int inputAmount = Integer.parseInt(inputAmountString);
+                    // ラジオボタンのテキストを取得
+                    String text = radioButton.getText().toString();
+
+                    // 金額をint型に変換
+                    int inputAmount = Integer.parseInt(inputAmountString);
 
 
-                // 金額の符号を設定
-                if(text.equals("支出")) {
-                    inputAmount *= -1;
+                    // 金額の符号を設定
+                    if(text.equals("支出")) {
+                        inputAmount *= -1;
+                    }
+
+                    // SQL
+
+                    Intent intent = new Intent(Input.this, Look.class);
+                    startActivity(intent);
+
+                } catch (ParseException e) {
+                    e.printStackTrace();
                 }
 
-                // SQL
 
-                Intent intent = new Intent(Input.this, Look.class);
-                startActivity(intent);
 
             }
 
@@ -191,9 +204,9 @@ public class Input extends AppCompatActivity {
         }
     }
 
-    @Override
+    /*@Override
     public boolean onTouchEvent(MotionEvent event) {
         mFocusView.requestFocus();
         return super.onTouchEvent(event);
-    }
+    }*/
 }
