@@ -9,20 +9,15 @@
     <color name="white">#FFFFFFFF</color>
 
     <color name="currently">#eff7ff</color>
-    <color name="currently_button">#add6ff</color>
+    <color name="currently_accent">#add6ff</color>
 
     <color name="future">#ffeff7</color>
-    <color name="future_button">#ffadd6</color>
+    <color name="future_accent">#ffadd6</color>
+
     <color name="line">#f1f1f1</color>
 
-    <!--   color for the app bar and other primary UI elements -->
-    <color name="primary">#c0c0c0</color>
-
-    <!--   a darker variant of the primary color, used for
-           the status bar (on Android 5.0+) and contextual app bars -->
     <color name="dark">#a9a9a9</color>
 
-    <!--   a secondary color for controls like checkboxes and text fields -->
     <color name="text">#696969</color>
 
 </resources>

@@ -1,5 +1,6 @@
 package com.example.kaede1;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
 
@@ -39,6 +40,10 @@ public class Fix extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fix);
+
+
+        // アクションバーにタイトル追加
+        setTitle("編集");
 
         Intent intent = getIntent();
 

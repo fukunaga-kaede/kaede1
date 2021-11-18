@@ -14,7 +14,6 @@
         android:orientation="vertical"
         android:background="@color/currently">
 
-
         <TextView
             android:id="@+id/inputDate"
             android:layout_width="match_parent"
@@ -56,7 +55,7 @@
             android:background="@color/white"
             android:orientation="horizontal">
 
-            <RadioButton
+            <!--<RadioButton
                 android:id="@+id/flgExpenditure"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -82,6 +81,28 @@
                 android:textColor="@color/text"
                 android:button="@null"
                 android:gravity="center"
+                android:text="@string/income"/>-->
+
+            <RadioButton
+                android:id="@+id/flgExpenditure"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp"
+                android:textColor="@color/text"
+                android:text="@string/expenditure"/>
+
+
+
+            <RadioButton
+                android:id="@+id/flgIncome"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp"
+                android:textColor="@color/text"
                 android:text="@string/income"/>
 
         </RadioGroup>
@@ -152,7 +173,6 @@
                 android:paddingBottom="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginLeft="20dp"
-                android:backgroundTint="@color/currently_button"
                 android:onClick="onBackButtonClick"
                 android:text="@string/back_button"/>
 
@@ -165,13 +185,10 @@
                 android:paddingBottom="10dp"
                 android:layout_marginRight="20dp"
                 android:layout_marginLeft="10dp"
-                android:backgroundTint="@color/currently_button"
                 android:text="@string/input"/>
 
 
 
         </LinearLayout>
-
-
     </LinearLayout>
 </ScrollView>

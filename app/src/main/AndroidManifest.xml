@@ -12,17 +12,20 @@
         <activity
             android:name=".Input"
             android:exported="false"
-            android:windowSoftInputMode="adjustResize"/>
+            android:windowSoftInputMode="adjustResize"
+            android:theme="@style/currently"/>
         <activity
             android:name=".Fix"
             android:exported="false"
-            android:windowSoftInputMode="adjustResize"/>
+            android:windowSoftInputMode="adjustResize"
+            android:theme="@style/currently"/>
         <activity
             android:name=".MainActivity"
             android:exported="false" />
         <activity
             android:name=".Look"
-            android:exported="true">
+            android:exported="true"
+            android:theme="@style/currently">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

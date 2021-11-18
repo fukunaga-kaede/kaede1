@@ -14,6 +14,7 @@ import android.widget.SimpleAdapter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -29,9 +30,19 @@ public class Look extends AppCompatActivity {
         ListView lvMenu = findViewById(R.id.look_list);
         List<Map<String,Object>> menuList = new ArrayList<>();
 
+
+        // 現在の月を取得
+        Calendar date = Calendar.getInstance();
+        int nowMonth = date.get(Calendar.MONTH);
+
+
+        // アクションバーにタイトル追加
+        setTitle((nowMonth+1) + "月");
+
+
+
         Map<String,Object> menu = new HashMap<>();
-        // 実験
-        // あいうえお
+
         menu.put("date","2021/11/1");
         menu.put("item","服");
         menu.put("memo","UNIQLO");

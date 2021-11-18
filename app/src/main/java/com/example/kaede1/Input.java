@@ -34,6 +34,9 @@ public class Input extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_input);
 
+        // アクションバーにタイトル追加
+        setTitle("追加");
+
         // 保存ボタンの取得
         Button inputClick = findViewById(R.id.inputClick);
         // 保存ボタンのリスナクラスのインスタンスを作成
