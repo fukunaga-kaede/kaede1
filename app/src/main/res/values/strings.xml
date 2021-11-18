@@ -4,12 +4,15 @@
     <string name="income">収入</string>
     <string name="expenditure">支出</string>
     <string name="add">追加</string>
+    <string name="edit">編集</string>
     <string name="fix">修正</string>
     <string name="delete">削除</string>
     <string name="input">保存</string>
     <string name="positive_button">ＯＫ</string>
     <string name="negative_button">キャンセル</string>
     <string name="back_button">←戻る</string>
+    <string name="next_month">来月→</string>
+    <string name="last_month">←先月</string>
     <string name="date">日付</string>
     <string name="item">項目</string>
     <string name="amount">金額</string>

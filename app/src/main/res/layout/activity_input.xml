@@ -15,6 +15,16 @@
         android:background="@color/currently">
 
         <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"
+            android:text = "@string/add"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:background="@color/currently_accent"/>
+
+        <TextView
             android:id="@+id/inputDate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -55,7 +65,7 @@
             android:background="@color/white"
             android:orientation="horizontal">
 
-            <!--<RadioButton
+            <RadioButton
                 android:id="@+id/flgExpenditure"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -81,28 +91,6 @@
                 android:textColor="@color/text"
                 android:button="@null"
                 android:gravity="center"
-                android:text="@string/income"/>-->
-
-            <RadioButton
-                android:id="@+id/flgExpenditure"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:layout_marginRight="20dp"
-                android:layout_marginLeft="20dp"
-                android:textColor="@color/text"
-                android:text="@string/expenditure"/>
-
-
-
-            <RadioButton
-                android:id="@+id/flgIncome"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:layout_marginRight="20dp"
-                android:layout_marginLeft="20dp"
-                android:textColor="@color/text"
                 android:text="@string/income"/>
 
         </RadioGroup>

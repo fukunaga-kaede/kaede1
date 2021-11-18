@@ -14,7 +14,7 @@
         <!-- Customize your theme here. -->
     </style>
 
-    <style name="currently" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+    <style name="currently" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!--action dar and button and cancel,ok-->
         <item name="colorPrimary">@color/currently_accent</item>
 

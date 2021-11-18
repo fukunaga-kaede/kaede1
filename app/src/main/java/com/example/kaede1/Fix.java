@@ -41,10 +41,6 @@ public class Fix extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fix);
 
-
-        // アクションバーにタイトル追加
-        setTitle("編集");
-
         Intent intent = getIntent();
 
         String fixDate = intent.getStringExtra("fixDate");

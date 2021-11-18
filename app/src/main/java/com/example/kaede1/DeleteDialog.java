@@ -5,6 +5,7 @@ import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.TextView;
 
 import androidx.fragment.app.DialogFragment;
 
@@ -12,12 +13,14 @@ public class DeleteDialog extends DialogFragment {
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
+
+        TextView msgView = new TextView(getActivity());
         // ダイアログビルダーを作成
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         // ダイアログのタイトルを設定
         builder.setTitle(R.string.dialog_title);
         // ダイアログのメッセージを設定
-        builder.setTitle(R.string.dialog_msg);
+        builder.setMessage(R.string.dialog_msg);
         // Positive Buttonを設定。
         builder.setPositiveButton(R.string.positive_button, new DialogButtonClickListener());
         // Negative Buttonを設定。

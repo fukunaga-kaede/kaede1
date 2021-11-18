@@ -1,5 +1,6 @@
 package com.example.kaede1;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -10,6 +11,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.TextView;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -22,6 +24,8 @@ import java.util.Map;
 
 public class Look extends AppCompatActivity {
 
+    static int month_count;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,29 +34,50 @@ public class Look extends AppCompatActivity {
         ListView lvMenu = findViewById(R.id.look_list);
         List<Map<String,Object>> menuList = new ArrayList<>();
 
+        // intentを受け取る
+        Intent intent = getIntent();
+        month_count = intent.getIntExtra("month_count",0);
 
-        // 現在の月を取得
+        // 現在の年月を取得
         Calendar date = Calendar.getInstance();
-        int nowMonth = date.get(Calendar.MONTH);
+        int nowMonth = date.get(Calendar.MONTH)+1;
+        int nowYear = date.get(Calendar.YEAR);
+
+        // 表示したい月
+        int displayMonth = nowMonth+month_count;
+        int year_count = 0;
+        if(displayMonth > 12) {
+            while(displayMonth > 12){
+                displayMonth -= 12;
+                year_count++;
+            }
+        } else if (displayMonth < 1){
+            while(displayMonth < 1){
+                displayMonth += 12;
+                year_count--;
+            }
+        }
+        int displayYear = nowYear+year_count;
 
 
-        // アクションバーにタイトル追加
-        setTitle((nowMonth+1) + "月");
+        TextView year_month = findViewById(R.id.year_month);
+        year_month.setText(displayYear + "年" + displayMonth + "月");
 
 
+        // displayYearとDisplayMonthでDB検索してください。
 
         Map<String,Object> menu = new HashMap<>();
 
         menu.put("date","2021/11/1");
         menu.put("item","服");
-        menu.put("memo","UNIQLO");
+        menu.put("memo","(" + "UNIQLO" + ")");
         menu.put("amount",1000);
         menuList.add(menu);
 
         menu = new HashMap<>();
         menu.put("date","2021/11/15");
         menu.put("item","給料");
-        menu.put("memo","マック");
+        menu.put("memo","(" + "マック" + ")");
         menu.put("amount",5000);
         menuList.add(menu);
 
@@ -71,6 +96,20 @@ public class Look extends AppCompatActivity {
         AddClickListener add_listener = new AddClickListener();
         // 追加ボタンにリスナを設定
         addClick.setOnClickListener(add_listener);
+
+        // 来月ボタンの取得
+        Button nextClick = findViewById(R.id.next_month);
+        // 追加ボタンのリスナクラスのインスタンスを作成
+        nextClickListener next_listener = new nextClickListener();
+        // 追加ボタンにリスナを設定
+        nextClick.setOnClickListener(next_listener);
+
+        // 先月ボタンの取得
+        Button lastClick = findViewById(R.id.last_month);
+        // 追加ボタンのリスナクラスのインスタンスを作成
+        lastClickListener last_listener = new lastClickListener();
+        // 追加ボタンにリスナを設定
+        lastClick.setOnClickListener(last_listener);
     }
 
     //　リストがクリックされた時の処理
@@ -106,6 +145,30 @@ public class Look extends AppCompatActivity {
 
             // 入力画面に遷移
             Intent intent = new Intent(Look.this, Input.class);
+            startActivity(intent);
+        }
+    }
+
+    // nextボタンを押した場合の処理
+    private class nextClickListener implements View.OnClickListener {
+        @Override
+        public void onClick (View view) {
+            month_count += 1;
+
+            Intent intent = new Intent(Look.this, Look.class);
+            intent.putExtra("month_count", month_count);
+            startActivity(intent);
+        }
+    }
+
+    // lastボタンを押した場合の処理
+    private class lastClickListener implements View.OnClickListener {
+        @Override
+        public void onClick (View view) {
+            month_count -= 1;
+
+            Intent intent = new Intent(Look.this, Look.class);
+            intent.putExtra("month_count", month_count);
             startActivity(intent);
         }
     }
