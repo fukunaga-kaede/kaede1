@@ -34,16 +34,4 @@
         <item name="colorOnPrimary">@color/text</item>
 
     </style>
-
-    <style name = "CurrentlyDialogStyle" parent="Theme.AppCompat.Light.Dialog">
-        <!-- cancel,okの色 -->
-        <item name="colorOnPrimary">@color/currently_accent</item>
-
-        // 大きさの指定
-        <item name="android:windowMinWidthMajor">80%</item>
-        <item name="android:windowMinWidthMinor">80%</item>
-
-
-    </style>
-
 </resources>

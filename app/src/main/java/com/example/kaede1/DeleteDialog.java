@@ -9,13 +9,11 @@ import android.os.Bundle;
 import android.view.Gravity;
 import android.widget.TextView;
 
-import androidx.annotation.RequiresApi;
 import androidx.fragment.app.DialogFragment;
 
 
 public class DeleteDialog extends DialogFragment {
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
 
@@ -23,7 +21,6 @@ public class DeleteDialog extends DialogFragment {
         TextView titleView = new TextView(getActivity());
         titleView.setText(getResources().getText(R.string.dialog_title));
         titleView.setTextSize(20);
-
         titleView.setBackgroundColor(getResources().getColor(R.color.currently));
         titleView.setPadding(20, 20, 20, 20);
         titleView.setGravity(Gravity.CENTER);
@@ -36,7 +33,8 @@ public class DeleteDialog extends DialogFragment {
         msgView.setGravity(Gravity.CENTER);
 
         // ダイアログビルダーを作成
-        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(),R.style.CurrentlyDialogStyle);
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+
         // ダイアログのタイトルを設定
         builder.setCustomTitle(titleView);
         // ダイアログのメッセージを設定
