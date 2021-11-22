@@ -63,6 +63,7 @@ public class Fix extends AppCompatActivity {
         } else {
             // 支出（金額が負の数の場合の処理）
             rg.check(R.id.flgExpenditure);
+            fixAmount *= -1;
         }
 
         // テキストをxmlファイルにセット

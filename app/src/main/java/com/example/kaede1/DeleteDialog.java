@@ -5,22 +5,42 @@ import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.widget.TextView;
 
 import androidx.fragment.app.DialogFragment;
+
 
 public class DeleteDialog extends DialogFragment {
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
 
+        // タイトルのデザインを作成
+        TextView titleView = new TextView(getActivity());
+        titleView.setText(getResources().getText(R.string.dialog_title));
+        titleView.setTextSize(20);
+        titleView.setTextColor(getResources().getColor(R.color.text));
+        titleView.setFontFeatureSettings(String.valueOf(getResources().getAssets()));
+
+        titleView.setBackgroundColor(getResources().getColor(R.color.currently));
+        titleView.setPadding(20, 20, 20, 20);
+        titleView.setGravity(Gravity.CENTER);
+
+        // メッセージのデザインを作成
         TextView msgView = new TextView(getActivity());
+        msgView.setText(getResources().getText(R.string.dialog_msg));
+        msgView.setTextSize(16);
+        msgView.setTextColor(getResources().getColor(R.color.text));
+        msgView.setPadding(20, 40, 20, 20);
+        msgView.setGravity(Gravity.CENTER);
+
         // ダイアログビルダーを作成
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         // ダイアログのタイトルを設定
-        builder.setTitle(R.string.dialog_title);
+        builder.setCustomTitle(titleView);
         // ダイアログのメッセージを設定
-        builder.setMessage(R.string.dialog_msg);
+        builder.setView(msgView);
         // Positive Buttonを設定。
         builder.setPositiveButton(R.string.positive_button, new DialogButtonClickListener());
         // Negative Buttonを設定。
