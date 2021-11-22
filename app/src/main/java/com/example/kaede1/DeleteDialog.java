@@ -4,15 +4,18 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.widget.TextView;
 
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.DialogFragment;
 
 
 public class DeleteDialog extends DialogFragment {
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
 
@@ -20,8 +23,6 @@ public class DeleteDialog extends DialogFragment {
         TextView titleView = new TextView(getActivity());
         titleView.setText(getResources().getText(R.string.dialog_title));
         titleView.setTextSize(20);
-        titleView.setTextColor(getResources().getColor(R.color.text));
-        titleView.setFontFeatureSettings(String.valueOf(getResources().getAssets()));
 
         titleView.setBackgroundColor(getResources().getColor(R.color.currently));
         titleView.setPadding(20, 20, 20, 20);
@@ -31,12 +32,11 @@ public class DeleteDialog extends DialogFragment {
         TextView msgView = new TextView(getActivity());
         msgView.setText(getResources().getText(R.string.dialog_msg));
         msgView.setTextSize(16);
-        msgView.setTextColor(getResources().getColor(R.color.text));
         msgView.setPadding(20, 40, 20, 20);
         msgView.setGravity(Gravity.CENTER);
 
         // ダイアログビルダーを作成
-        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(),R.style.CurrentlyDialogStyle);
         // ダイアログのタイトルを設定
         builder.setCustomTitle(titleView);
         // ダイアログのメッセージを設定
