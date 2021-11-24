@@ -4,6 +4,7 @@
     <string name="income">収入</string>
     <string name="expenditure">支出</string>
     <string name="add">追加</string>
+    <string name="add_button">+</string>
     <string name="edit">編集</string>
     <string name="fix">修正</string>
     <string name="delete">削除</string>

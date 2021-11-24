@@ -3,11 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/lon/AndroidStudioProjects/kaede1/app/src/main/res/drawable/button_currently.xml" value="0.10104166666666667" />
         <entry key="..\:/Users/lon/AndroidStudioProjects/kaede1/app/src/main/res/drawable/button_design.xml" value="0.14635416666666667" />
         <entry key="..\:/Users/lon/AndroidStudioProjects/kaede1/app/src/main/res/drawable/button_design_currently.xml" value="0.14635416666666667" />
         <entry key="..\:/Users/lon/AndroidStudioProjects/kaede1/app/src/main/res/drawable/button_design_future.xml" value="0.14635416666666667" />
         <entry key="..\:/Users/lon/AndroidStudioProjects/kaede1/app/src/main/res/drawable/edittext_design.xml" value="0.14635416666666667" />
         <entry key="..\:/Users/lon/AndroidStudioProjects/kaede1/app/src/main/res/drawable/ic_launcher_background.xml" value="0.14635416666666667" />
+        <entry key="..\:/Users/lon/AndroidStudioProjects/kaede1/app/src/main/res/drawable/part_design.xml" value="0.2703125" />
         <entry key="..\:/Users/lon/AndroidStudioProjects/kaede1/app/src/main/res/drawable/partdesign.xml" value="0.14635416666666667" />
         <entry key="..\:/Users/lon/AndroidStudioProjects/kaede1/app/src/main/res/drawable/radio_currently.xml" value="0.2703125" />
         <entry key="..\:/Users/lon/AndroidStudioProjects/kaede1/app/src/main/res/drawable/radio_expenditure.xml" value="0.2703125" />

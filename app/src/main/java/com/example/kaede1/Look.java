@@ -77,12 +77,15 @@ public class Look extends AppCompatActivity {
         menu.put("amount",1000);
         menuList.add(menu);
 
-        menu = new HashMap<>();
-        menu.put("date","2021/11/15");
-        menu.put("item","給料");
-        menu.put("memo","(" + "マック" + ")");
-        menu.put("amount",5000);
-        menuList.add(menu);
+        for (int i = 0; i < 10; i++) {
+            menu = new HashMap<>();
+            menu.put("date","2021/11/15");
+            menu.put("item","給料");
+            menu.put("memo","(" + "マック" + ")");
+            menu.put("amount",5000);
+            menuList.add(menu);
+        }
+
 
 
 
