@@ -45,7 +45,7 @@ public class Fix extends AppCompatActivity {
 
         String fixDate = intent.getStringExtra("fixDate");
         String fixItem = intent.getStringExtra("fixItem");
-        int fixAmount = intent.getIntExtra("fixAmount",0);
+        String fixAmount = intent.getStringExtra("fixAmount");
         String fixMemo = intent.getStringExtra("fixMemo");
 
 
@@ -56,20 +56,22 @@ public class Fix extends AppCompatActivity {
         // ラジオグループのオブジェクトを取得
         RadioGroup rg = findViewById(R.id.flgIncomeExpenditure);
 
-        if(fixAmount >= 0) {
+        int fixAmountInt = Integer.parseInt(fixAmount);
+
+        if(fixAmountInt >= 0) {
             // 収入（金額が正の数の場合の処理）
             rg.check(R.id.flgIncome);
 
         } else {
             // 支出（金額が負の数の場合の処理）
             rg.check(R.id.flgExpenditure);
-            fixAmount *= -1;
+            fixAmountInt *= -1;
         }
 
         // テキストをxmlファイルにセット
         fixDateText.setText(fixDate);
         fixItemText.setText(fixItem);
-        fixAmountText.setText(Integer.toString(fixAmount));
+        fixAmountText.setText(Integer.toString(fixAmountInt));
         fixMemoText.setText(fixMemo);
 
         // DBの日時の分割（初期値用）

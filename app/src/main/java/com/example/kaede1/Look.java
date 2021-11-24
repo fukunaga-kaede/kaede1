@@ -91,7 +91,7 @@ public class Look extends AppCompatActivity {
         menu.put("date","2021/11/1");
         menu.put("item","服");
         menu.put("memo","(" + "UNIQLO" + ")");
-        menu.put("amount",1000);
+        menu.put("amount",5000);
         menuList.add(menu);
 
         for (int i = 0; i < 10; i++) {
@@ -99,7 +99,7 @@ public class Look extends AppCompatActivity {
             menu.put("date","2021/11/15");
             menu.put("item","給料");
             menu.put("memo","(" + "マック" + ")");
-            menu.put("amount",String.format("%,d", 5000 ));
+            menu.put("amount",5000);
             menuList.add(menu);
         }
 
@@ -152,7 +152,7 @@ public class Look extends AppCompatActivity {
             String fixDate = item.get("date").toString();
             String fixItem = item.get("item").toString();
             String fixMemo = item.get("memo").toString();
-            int fixAmount = Integer.parseInt(item.get("amount").toString());
+            String fixAmount = item.get("amount").toString();
 
             // fix画面に送るデータの格納
             Intent intent = new Intent(Look.this, Fix.class);
