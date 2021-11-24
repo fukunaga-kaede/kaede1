@@ -173,10 +173,4 @@ public class Input extends AppCompatActivity {
         }
     }
 
-
-    /*@Override
-    public boolean onTouchEvent(MotionEvent event) {
-        mFocusView.requestFocus();
-        return super.onTouchEvent(event);
-    }*/
 }

@@ -10,15 +10,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Kaede1">
         <activity
+            android:name=".FuLook"
+            android:exported="false" />
+        <activity
             android:name=".Input"
             android:exported="false"
-            android:windowSoftInputMode="adjustResize"
-            android:theme="@style/currently"/>
+            android:theme="@style/currently"
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".Fix"
             android:exported="false"
-            android:windowSoftInputMode="adjustResize"
-            android:theme="@style/currently"/>
+            android:theme="@style/currently"
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".MainActivity"
             android:exported="false" />

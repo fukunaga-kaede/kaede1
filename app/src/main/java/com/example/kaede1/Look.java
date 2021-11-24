@@ -10,8 +10,11 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -110,6 +113,14 @@ public class Look extends AppCompatActivity {
         lastClickListener last_listener = new lastClickListener();
         // 追加ボタンにリスナを設定
         lastClick.setOnClickListener(last_listener);
+
+        // simulation radio buttonの取得
+        RadioButton simulationClick = findViewById(R.id.flgSimulation);
+        // simulation radio buttonのリスナクラスのインスタンスを作成
+        SimulationClickListener simulation_Listener = new SimulationClickListener();
+        // simulation radio buttonにリスナを設定
+        simulationClick.setOnClickListener(simulation_Listener);
+
     }
 
     //　リストがクリックされた時の処理
@@ -170,6 +181,17 @@ public class Look extends AppCompatActivity {
             Intent intent = new Intent(Look.this, Look.class);
             intent.putExtra("month_count", month_count);
             startActivity(intent);
+        }
+    }
+
+    // simulationボタンを押した場合の処理
+    private class SimulationClickListener implements View.OnClickListener {
+        @Override
+        public void onClick (View view) {
+
+            Intent intent = new Intent(Look.this, FuLook.class);
+            startActivity(intent);
+
         }
     }
 }

@@ -4,9 +4,7 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
-import android.view.Gravity;
 import android.widget.TextView;
 
 import androidx.fragment.app.DialogFragment;
@@ -22,15 +20,13 @@ public class DeleteDialog extends DialogFragment {
         titleView.setText(getResources().getText(R.string.dialog_title));
         titleView.setTextSize(20);
         titleView.setBackgroundColor(getResources().getColor(R.color.currently));
-        titleView.setPadding(20, 20, 20, 20);
-        titleView.setGravity(Gravity.CENTER);
+        titleView.setPadding(80, 20, 20, 20);
 
         // メッセージのデザインを作成
         TextView msgView = new TextView(getActivity());
         msgView.setText(getResources().getText(R.string.dialog_msg));
         msgView.setTextSize(16);
-        msgView.setPadding(20, 40, 20, 20);
-        msgView.setGravity(Gravity.CENTER);
+        msgView.setPadding(160, 60, 20, 20);
 
         // ダイアログビルダーを作成
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
