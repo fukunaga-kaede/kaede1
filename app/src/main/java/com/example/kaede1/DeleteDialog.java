@@ -51,7 +51,6 @@ public class DeleteDialog extends DialogFragment {
                 case DialogInterface.BUTTON_POSITIVE:
                     // DELETE文実行
                     Fix fix = new Fix();
-                    fix.delete();
 
                     // 画面遷移
                     Intent intent = new Intent(getActivity(), Look.class);

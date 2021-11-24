@@ -69,6 +69,23 @@ public class Look extends AppCompatActivity {
 
         // displayYearとDisplayMonthでDB検索してください。
 
+        // 合計、収入、支出の変数定義、初期値設定
+        int total = 0;
+        int income = 0;
+        int expenditure = 0;
+
+        // 合計、収入、支出のTextView取得
+        TextView totalText = findViewById(R.id.look_total);
+        TextView incomeText = findViewById(R.id.look_income);
+        TextView expenditureText = findViewById(R.id.look_expenditure);
+
+        // 合計、収入、支出の内容をTextViewにセット
+        totalText.setText(String.format("%,d", total));
+        incomeText.setText(String.format("%,d", income));
+        expenditureText.setText(String.format("%,d", expenditure));
+
+
+
         Map<String,Object> menu = new HashMap<>();
 
         menu.put("date","2021/11/1");
@@ -82,7 +99,7 @@ public class Look extends AppCompatActivity {
             menu.put("date","2021/11/15");
             menu.put("item","給料");
             menu.put("memo","(" + "マック" + ")");
-            menu.put("amount",5000);
+            menu.put("amount",String.format("%,d", 5000 ));
             menuList.add(menu);
         }
 

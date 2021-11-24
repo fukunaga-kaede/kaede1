@@ -211,12 +211,6 @@ public class Fix extends AppCompatActivity {
         }
     }
 
-    // DB削除
-    public void delete() {
-        //SQL文
-
-    }
-
 
 
 
