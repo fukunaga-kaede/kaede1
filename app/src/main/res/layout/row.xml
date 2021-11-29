@@ -19,7 +19,6 @@
             android:id="@+id/display_date"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/white"
             android:textSize="15sp"
             android:text = "2000/7/24"/>
 
@@ -45,6 +44,12 @@
                 android:layout_height="wrap_content"
                 android:textSize="20sp"
                 android:text="マック"/>
+
+            <TextView
+                android:id="@+id/display_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="0sp"/>
 
 
             <TextView

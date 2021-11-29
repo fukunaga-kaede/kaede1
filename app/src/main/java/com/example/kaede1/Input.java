@@ -1,22 +1,21 @@
 package com.example.kaede1;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteStatement;
 import android.os.Bundle;
-import android.text.InputType;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.DatePicker;
-import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -156,21 +155,36 @@ public class Input extends AppCompatActivity {
                         inputAmount *= -1;
                     }
 
-                    // SQL
+                    // DBの更新処理(INSERT)
+                    DatabaseHelper helper = new DatabaseHelper(Input.this);
+                    SQLiteDatabase db = helper.getWritableDatabase();
 
+                    if(helper == null){
+                        helper = new DatabaseHelper(getApplicationContext());
+                    }
+
+                    if(db == null){
+                        db = helper.getReadableDatabase();
+                    }
+                    try {
+                        String sqlInsert = "INSERT INTO tsuyu6 (_id, date, item, amount, memo) VALUES (?,?,?,?,?)";
+                        SQLiteStatement stmt = db.compileStatement(sqlInsert);
+                        stmt.bindString(2, inputDateString);
+                        stmt.bindString(3, inputItem);
+                        stmt.bindLong(4, inputAmount);
+                        stmt.bindString(5, inputMemo);
+
+                        stmt.executeInsert();
+                    }finally {
+                        db.close();
+                    }
                     Intent intent = new Intent(Input.this, Look.class);
                     startActivity(intent);
 
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }
-
-
-
             }
-
-
         }
     }
-
 }

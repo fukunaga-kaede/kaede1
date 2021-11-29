@@ -1,18 +1,10 @@
 package com.example.kaede1;
 
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.DialogFragment;
-
-import android.app.AlertDialog;
 import android.app.DatePickerDialog;
-import android.app.Dialog;
-import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteStatement;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
@@ -23,10 +15,10 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.DayOfWeek;
-import java.util.Calendar;
 import java.util.Date;
 
 public class Fix extends AppCompatActivity {
@@ -34,6 +26,12 @@ public class Fix extends AppCompatActivity {
     int newYear;
     int newMonth;
     int newDay;
+
+    static String _id = "";
+    String fixDate = "";
+    String fixItem = "";
+    String fixAmount = "";
+    String fixMemo = "";
 
 
     @Override
@@ -43,18 +41,33 @@ public class Fix extends AppCompatActivity {
 
         Intent intent = getIntent();
 
-        String fixDate = intent.getStringExtra("fixDate");
-        String fixItem = intent.getStringExtra("fixItem");
-        String fixAmount = intent.getStringExtra("fixAmount");
-        String fixMemo = intent.getStringExtra("fixMemo");
+        _id = intent.getStringExtra("listId");
+        fixDate = intent.getStringExtra("fixDate");
+        fixItem = intent.getStringExtra("fixItem");
+        fixAmount = intent.getStringExtra("fixAmount");
+        fixMemo = intent.getStringExtra("fixMemo");
 
 
         TextView fixDateText = findViewById(R.id.fixDate);
         TextView fixItemText = findViewById(R.id.fixItem);
         TextView fixAmountText = findViewById(R.id.fixAmount);
         TextView fixMemoText = findViewById(R.id.fixMemo);
+
+        // メモの()を除去
+        String[] strMemo = fixMemo.split("()");
+        fixMemo = "";
+        for (int i = 2; i < strMemo.length-1; i++) {
+            fixMemo += strMemo[i];
+        }
+
         // ラジオグループのオブジェクトを取得
         RadioGroup rg = findViewById(R.id.flgIncomeExpenditure);
+
+        String[] strAmount = fixAmount.split(",");
+        fixAmount = "";
+        for(String i : strAmount ) {
+            fixAmount += i;
+        }
 
         int fixAmountInt = Integer.parseInt(fixAmount);
 
@@ -75,7 +88,7 @@ public class Fix extends AppCompatActivity {
         fixMemoText.setText(fixMemo);
 
         // DBの日時の分割（初期値用）
-        String[] strDate = fixDate.split("/");
+        String[] strDate = fixDate.split(" / ");
         newYear = Integer.parseInt(strDate[0]);
         int Month = Integer.parseInt(strDate[1]);
         newMonth = Month - 1;
@@ -189,7 +202,24 @@ public class Fix extends AppCompatActivity {
                         fixAmount *= -1;
                     }
 
-                    // SQL
+                    // DB更新処理(UPDATE)
+                    int id = Integer.parseInt(_id);
+                    DatabaseHelper helper = new DatabaseHelper(Fix.this);
+                    SQLiteDatabase db = helper.getWritableDatabase();
+
+                    try {
+                        String sqlUpdate = "UPDATE tsuyu6 SET date = ?, item = ?, amount = ?, memo = ? WHERE _id = " + id;
+                        SQLiteStatement stmt = db.compileStatement(sqlUpdate);
+                        stmt.bindString(1, fixDate);
+                        stmt.bindString(2, fixItem);
+                        stmt.bindLong(3, fixAmount);
+                        stmt.bindString(4, fixMemo);
+
+                        stmt.executeInsert();
+
+                    }finally {
+                        db.close();
+                    }
 
                     Intent intent = new Intent(Fix.this, Look.class);
                     startActivity(intent);
@@ -197,13 +227,12 @@ public class Fix extends AppCompatActivity {
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }
-
-
+                finish();
             }
         }
     }
 
-    // 削除ボタンを押した場合の処理
+    // 削除ボタンを押した場合の処理ええええ
     private class DeleteClickListener implements View.OnClickListener {
         @Override
         public void onClick (View view) {
@@ -212,8 +241,4 @@ public class Fix extends AppCompatActivity {
             dialogFragment.show(getSupportFragmentManager(),"DeleteDialog");
         }
     }
-
-
-
-
 }

@@ -1,26 +1,24 @@
 package com.example.kaede1;
 
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.DatabaseUtils;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.SimpleAdapter;
+import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
+import androidx.appcompat.app.AppCompatActivity;
+
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -31,11 +29,14 @@ public class Look extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
+        setTheme(R.style.currently);
         setContentView(R.layout.activity_look);
 
         ListView lvMenu = findViewById(R.id.look_list);
         List<Map<String,Object>> menuList = new ArrayList<>();
+        Map<String,Object> menu = new HashMap<>();
 
         // intentを受け取る
         Intent intent = getIntent();
@@ -69,6 +70,8 @@ public class Look extends AppCompatActivity {
 
         // displayYearとDisplayMonthでDB検索してください。
 
+
+
         // 合計、収入、支出の変数定義、初期値設定
         int total = 0;
         int income = 0;
@@ -84,30 +87,86 @@ public class Look extends AppCompatActivity {
         incomeText.setText(String.format("%,d", income));
         expenditureText.setText(String.format("%,d", expenditure));
 
+        // ListView の背景設定
+        ImageView imageView = findViewById(R.id.flower);
+        imageView.setBackgroundResource(R.drawable.splash);
+
+        //DB接続準備
+        DatabaseHelper helper = new DatabaseHelper(Look.this);
+        SQLiteDatabase db = helper.getWritableDatabase();
 
 
-        Map<String,Object> menu = new HashMap<>();
+        if(helper == null){
+            helper = new DatabaseHelper(getApplicationContext());
+        }
+        if(db == null){
+            db = helper.getReadableDatabase();
+        }
+        try {
 
-        menu.put("date","2021/11/1");
-        menu.put("item","服");
-        menu.put("memo","(" + "UNIQLO" + ")");
-        menu.put("amount",5000);
-        menuList.add(menu);
+            String sql = "SELECT * FROM tsuyu6";
+            Cursor cur = db.rawQuery(sql,null);
 
-        for (int i = 0; i < 10; i++) {
-            menu = new HashMap<>();
-            menu.put("date","2021/11/15");
-            menu.put("item","給料");
-            menu.put("memo","(" + "マック" + ")");
-            menu.put("amount",5000);
-            menuList.add(menu);
+            //DBの_idをリストに渡す
+            String[] from = {"_id","date","item","memo","amount"};
+            int[] to = {R.id.display_id, R.id.display_date, R.id.display_item, R.id.display_memo, R.id.display_amount};
+            SimpleCursorAdapter adapter = new SimpleCursorAdapter(Look.this, R.layout.row, cur, from, to,0);
+            lvMenu.setAdapter(adapter);
+
+
+            //1行ずつDBからリストへ
+            long Count = DatabaseUtils.queryNumEntries(db,"tsuyu6", null,null);
+            for (int i = 0; i <= Count; i++){
+
+                String selectSql = "SELECT * FROM tsuyu6 LIMIT " + i + "," + 1;
+                Cursor cursor = db.rawQuery(selectSql, null);
+                String _id = "";
+                String sdate = "";
+                String item = "";
+                String amount = "";
+                String memo = "";
+
+                while(cursor.moveToNext()){
+                    //DBの列番号(index)を取得
+                    int idxId = cursor.getColumnIndex("_id");
+                    int idxDate = cursor.getColumnIndex("date");
+                    int idxItem = cursor.getColumnIndex("item");
+                    int idxAmount = cursor.getColumnIndex("amount");
+                    int idxMemo = cursor.getColumnIndex("memo");
+
+                    //列番号(index)にあるデータを取得
+                    _id = cursor.getString(idxId);
+                    sdate = cursor.getString(idxDate);
+                    item = cursor.getString(idxItem);
+                    amount = cursor.getString(idxAmount);
+                    memo = cursor.getString(idxMemo);
+
+                    if(memo.equals("")) {
+
+                    } else {
+                        memo = "(" + memo + ")";
+                    }
+
+                    //取得したデータをリストのmapに入れる
+                    menu = new HashMap<>();
+                    menu.put("_id", _id);
+                    menu.put("date", sdate);
+                    menu.put("item", item);
+                    menu.put("amount",amount);
+                    menu.put("memo", memo);
+                    menuList.add(menu);
+
+                    cursor.moveToFirst();
+                }
+            }
+
+
+        }finally {
+            db.close();
         }
 
-
-
-
-        String[] from = {"date","item","memo","amount"};
-        int[] to = {R.id.display_date,R.id.display_item, R.id.display_memo,R.id.display_amount};
+        String[] from = {"_id","date","item","memo","amount"};
+        int[] to = {R.id.display_id, R.id.display_date, R.id.display_item, R.id.display_memo, R.id.display_amount};
         SimpleAdapter adapter = new SimpleAdapter(Look.this,menuList,R.layout.row,from,to);
         lvMenu.setAdapter(adapter);
 
@@ -149,6 +208,7 @@ public class Look extends AppCompatActivity {
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
             Map<String, Object> item = (Map<String, Object>)parent.getItemAtPosition(position);
 
+            String _id = item.get("_id").toString();
             String fixDate = item.get("date").toString();
             String fixItem = item.get("item").toString();
             String fixMemo = item.get("memo").toString();
@@ -157,6 +217,7 @@ public class Look extends AppCompatActivity {
             // fix画面に送るデータの格納
             Intent intent = new Intent(Look.this, Fix.class);
 
+            intent.putExtra("listId",_id);
             intent.putExtra("fixDate", fixDate);
             intent.putExtra("fixItem", fixItem);
             intent.putExtra("fixMemo", fixMemo);
