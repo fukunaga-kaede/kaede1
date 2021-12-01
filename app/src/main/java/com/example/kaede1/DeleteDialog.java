@@ -56,6 +56,7 @@ public class DeleteDialog extends DialogFragment {
 
                     String listid = fix._id;
                     int displayMonth = fix.displayMonth;
+                    int displayYear = fix.displayYear;
 
                     // DBの更新処理(DELETE)
                     int _id = Integer.parseInt(listid);
@@ -72,9 +73,10 @@ public class DeleteDialog extends DialogFragment {
 
                     // 画面遷移
                     Intent intent = new Intent(getActivity(), Look.class);
+                    intent.putExtra("displayYear", displayYear);
                     intent.putExtra("displayMonth", displayMonth);
                     startActivity(intent);
-
+                    fix.Finish();
 
                     break;
 

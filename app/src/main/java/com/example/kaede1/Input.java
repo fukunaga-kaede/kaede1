@@ -27,7 +27,9 @@ public class Input extends AppCompatActivity {
     int newYear;
     int newMonth;
     int newDay;
-    int displayMonth;
+    static int displayYear;
+    static int displayMonth;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +38,7 @@ public class Input extends AppCompatActivity {
 
         Intent intent = getIntent();
 
+        displayYear = intent.getIntExtra("displayYear",0);
         displayMonth = intent.getIntExtra("displayMonth",0);
 
         // 保存ボタンの取得
@@ -104,6 +107,7 @@ public class Input extends AppCompatActivity {
     public void onBackButtonClick(View view) {
 
         Intent intent = new Intent(Input.this, Look.class);
+        intent.putExtra("displayYear", displayYear);
         intent.putExtra("displayMonth", displayMonth);
         startActivity(intent);
 
@@ -147,6 +151,7 @@ public class Input extends AppCompatActivity {
 
                 // 入力された月を取得
                 String[] strDate = inputDate.split(" / ");
+                int year = Integer.parseInt(strDate[0]);
                 int month = Integer.parseInt(strDate[1]);
 
                 // 選択されているラジオボタンの取得
@@ -188,7 +193,8 @@ public class Input extends AppCompatActivity {
                     db.close();
                 }
                 Intent intent = new Intent(Input.this, Look.class);
-                intent.putExtra("month", month);
+                intent.putExtra("displayYear", year);
+                intent.putExtra("displayMonth", month);
                 startActivity(intent);
                 finish();
 

@@ -32,9 +32,9 @@ public class Fix extends AppCompatActivity {
     String fixItem = "";
     String fixAmount = "";
     String fixMemo = "";
-    int displayMonth;
+    static int displayMonth;
+    static int displayYear;
 
-    static int month;
 
 
     @Override
@@ -50,6 +50,7 @@ public class Fix extends AppCompatActivity {
         fixAmount = intent.getStringExtra("fixAmount");
         fixMemo = intent.getStringExtra("fixMemo");
         displayMonth = intent.getIntExtra("displayMonth",0);
+        displayYear = intent.getIntExtra("displayYear",0);
 
 
         TextView fixDateText = findViewById(R.id.fixDate);
@@ -94,7 +95,7 @@ public class Fix extends AppCompatActivity {
         // DBの日時の分割（初期値用）
         String[] strDate = fixDate.split(" / ");
         newYear = Integer.parseInt(strDate[0]);
-        month = Integer.parseInt(strDate[1]);
+        int month = Integer.parseInt(strDate[1]);
         newMonth = month - 1;
         newDay = Integer.parseInt(strDate[2]);
 
@@ -162,6 +163,7 @@ public class Fix extends AppCompatActivity {
 
         Intent intent = new Intent(Fix.this, Look.class);
         intent.putExtra("displayMonth", displayMonth);
+        intent.putExtra("displayYear", displayYear);
         startActivity(intent);
         finish();
     }
@@ -202,7 +204,8 @@ public class Fix extends AppCompatActivity {
 
                 // 入力された月を取得
                 String[] strDate = fixDate.split(" / ");
-                month = Integer.parseInt(strDate[1]);
+                int year = Integer.parseInt(strDate[0]);
+                int month = Integer.parseInt(strDate[1]);
 
 
                 // 金額の符号を設定
@@ -230,7 +233,8 @@ public class Fix extends AppCompatActivity {
                 }
 
                 Intent intent = new Intent(Fix.this, Look.class);
-                intent.putExtra("month", month);
+                intent.putExtra("displayYear", year);
+                intent.putExtra("displayMonth", month);
                 startActivity(intent);
 
                 finish();
@@ -246,5 +250,9 @@ public class Fix extends AppCompatActivity {
             DeleteDialog dialogFragment = new DeleteDialog();
             dialogFragment.show(getSupportFragmentManager(),"DeleteDialog");
         }
+    }
+
+    public void Finish() {
+        finish();
     }
 }
