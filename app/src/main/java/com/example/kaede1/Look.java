@@ -28,6 +28,7 @@ import java.util.Map;
 public class Look extends AppCompatActivity {
 
     static int month_count;
+    static int displayMonth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +44,7 @@ public class Look extends AppCompatActivity {
         // intentを受け取る
         Intent intent = getIntent();
         month_count = intent.getIntExtra("month_count",0);
-        int month = intent.getIntExtra("month",-1);
+        int displayReturnMonth = intent.getIntExtra("displayMonth",-1);
 
         // 現在の年月を取得
         Calendar date = Calendar.getInstance();
@@ -51,7 +52,7 @@ public class Look extends AppCompatActivity {
         int nowYear = date.get(Calendar.YEAR);
 
         // 表示したい月
-        int displayMonth = nowMonth+month_count;
+        displayMonth = nowMonth+month_count;
         int year_count = 0;
         if(displayMonth > 12) {
             while(displayMonth > 12){
@@ -67,8 +68,8 @@ public class Look extends AppCompatActivity {
         int displayYear = nowYear+year_count;
 
         // 追加、編集画面から戻ってきた場合
-        if(month != -1) {
-            displayMonth = month;
+        if(displayReturnMonth != -1) {
+            displayMonth = displayReturnMonth;
         }
 
 
@@ -290,8 +291,10 @@ public class Look extends AppCompatActivity {
             intent.putExtra("fixMemo", fixMemo);
             intent.putExtra("fixAmount", fixAmount);
 
-            startActivity(intent);
+            intent.putExtra("month", displayMonth);
 
+            startActivity(intent);
+            finish();
         }
     }
 
@@ -304,7 +307,9 @@ public class Look extends AppCompatActivity {
 
             // 入力画面に遷移
             Intent intent = new Intent(Look.this, Input.class);
+            intent.putExtra("month", displayMonth);
             startActivity(intent);
+            finish();
         }
     }
 
@@ -317,6 +322,7 @@ public class Look extends AppCompatActivity {
             Intent intent = new Intent(Look.this, Look.class);
             intent.putExtra("month_count", month_count);
             startActivity(intent);
+            finish();
         }
     }
 
@@ -329,6 +335,7 @@ public class Look extends AppCompatActivity {
             Intent intent = new Intent(Look.this, Look.class);
             intent.putExtra("month_count", month_count);
             startActivity(intent);
+            finish();
         }
     }
 
@@ -339,6 +346,7 @@ public class Look extends AppCompatActivity {
 
             Intent intent = new Intent(Look.this, FuLook.class);
             startActivity(intent);
+            finish();
 
         }
     }

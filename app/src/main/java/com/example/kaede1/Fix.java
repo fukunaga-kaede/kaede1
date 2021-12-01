@@ -32,6 +32,7 @@ public class Fix extends AppCompatActivity {
     String fixItem = "";
     String fixAmount = "";
     String fixMemo = "";
+    int displayMonth;
 
     static int month;
 
@@ -48,6 +49,7 @@ public class Fix extends AppCompatActivity {
         fixItem = intent.getStringExtra("fixItem");
         fixAmount = intent.getStringExtra("fixAmount");
         fixMemo = intent.getStringExtra("fixMemo");
+        displayMonth = intent.getIntExtra("displayMonth",0);
 
 
         TextView fixDateText = findViewById(R.id.fixDate);
@@ -158,6 +160,9 @@ public class Fix extends AppCompatActivity {
     // 戻るボタンを押した場合の処理
     public void onBackButtonClick(View view) {
 
+        Intent intent = new Intent(Fix.this, Look.class);
+        intent.putExtra("displayMonth", displayMonth);
+        startActivity(intent);
         finish();
     }
 

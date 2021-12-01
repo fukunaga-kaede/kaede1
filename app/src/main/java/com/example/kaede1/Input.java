@@ -27,11 +27,16 @@ public class Input extends AppCompatActivity {
     int newYear;
     int newMonth;
     int newDay;
+    int displayMonth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_input);
+
+        Intent intent = getIntent();
+
+        displayMonth = intent.getIntExtra("displayMonth",0);
 
         // 保存ボタンの取得
         Button inputClick = findViewById(R.id.inputClick);
@@ -97,6 +102,10 @@ public class Input extends AppCompatActivity {
 
     // 戻るボタンを押した場合の処理
     public void onBackButtonClick(View view) {
+
+        Intent intent = new Intent(Input.this, Look.class);
+        intent.putExtra("displayMonth", displayMonth);
+        startActivity(intent);
 
         finish();
     }
@@ -181,6 +190,7 @@ public class Input extends AppCompatActivity {
                 Intent intent = new Intent(Input.this, Look.class);
                 intent.putExtra("month", month);
                 startActivity(intent);
+                finish();
 
             }
         }
